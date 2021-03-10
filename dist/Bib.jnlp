@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Bib.jnlp">
+  <information>
+    <title>Bib</title>
+    <vendor>Aoe Neko 98</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Bib.jar" size="27537" download="eager" />
+    <jar href="lib\apache-httpcomponents-httpclient.jar" size="349959" download="eager" />
+    <jar href="lib\apache-httpcomponents-httpcore.jar" size="181041" download="eager" />
+    <jar href="lib\apache-httpcomponents-httpmime.jar" size="26813" download="eager" />
+    <jar href="lib\com.mysql.jdbc_5.1.5.jar" size="676712" download="eager" />
+    <jar href="lib\common-logging-2.0.2-ga.jar" size="11221" download="eager" />
+    <jar href="lib\commons-io-1.4.jar" size="275220" download="eager" />
+    <jar href="lib\commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib\jfoenix-8.0.1.jar" size="2405715" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Bib" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="Main.Main"  name="Bib" />
+  <update check="always"/>
+</jnlp>

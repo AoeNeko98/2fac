@@ -8,6 +8,7 @@ package Main.view;
 import Util.PostFile;
 import entity.Book;
 import entity.Category;
+import entity.User;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ public class BookEditDialogController {
     @FXML
     private ComboBox<Category> TypeField;
     @FXML
+    private ComboBox<String> types2Field;
+    @FXML
     private TextField DiscretionField;
     @FXML
     private TextField PrixField;
@@ -52,6 +55,8 @@ public class BookEditDialogController {
     private BookService bs = new BookService();
     CategoryService cs = new CategoryService();
     private ObservableList<Category> types;
+    private User user =new User();
+   
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -59,12 +64,22 @@ public class BookEditDialogController {
      */
     @FXML
     private void initialize() {
+        
+        
         types = FXCollections.observableArrayList();
         ArrayList<Category> lsc = cs.getAllCategories();
         lsc.stream().forEach((j) -> {
             types.add(j);
         });
         TypeField.setItems(types);
+           ObservableList<String> types2 = 
+    FXCollections.observableArrayList(
+        "Tous",
+        "Vendre",
+        "Echange",
+        "Demande"
+    );
+           types2Field.setItems(types2);
     }
 
     /**
@@ -94,6 +109,7 @@ public class BookEditDialogController {
         book.setNom(NameField.getText());
         book.setCategory(TypeField.getValue());
         book.setDiscreption(DiscretionField.getText());
+        
         try {
             book.setPrix(Float.parseFloat(PrixField.getText()));
         } catch (NumberFormatException exception) {
@@ -102,7 +118,7 @@ public class BookEditDialogController {
         if (f.getName().length()> 0) {
             book.setImage(PostFile.upload(f.getAbsolutePath()));
         }
-
+        book.setType(types2Field.getValue());
         System.out.println("boook : " + book.getId());
         bs.editBook(book);
         okClicked = true;
@@ -127,6 +143,8 @@ public class BookEditDialogController {
         DiscretionField.setText(book.getDiscreption());
         //ImageField.setText(book.getImage());
         PrixField.setText(book.getPrix() + "");
+        types2Field.setValue(book.getType());
+        
 
     }
 

@@ -19,6 +19,19 @@ public class Book {
     private float prix;
     private String image;
     private Category category ;
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+ 
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    
 
     public Category getCategory() {
         return category;
@@ -97,7 +110,9 @@ public class Book {
 
     public Book() {
         category = new Category();
+        user=new User();
     }
+    
  @Override
     public String toString() {
         return "nom=" + nom + ", Type=" + type + ", discription=" + discreption + ", prix=" + prix +",image="+image+ '}';

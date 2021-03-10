@@ -8,8 +8,11 @@ package Main.view;
 import Main.Main;
 import entity.Book;
 import entity.Category;
+import entity.User;
+
 import java.io.IOException;
 import java.net.URL;
+import static java.sql.JDBCType.NULL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +29,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -37,6 +41,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import service.BookService;
 import service.CategoryService;
+import service.UserService;
 
 /**
  * FXML Controller class
@@ -44,13 +49,15 @@ import service.CategoryService;
  * @author Aoe Neko 98
  */
 public class BookController {
-    
+
     @FXML
     private TableView<Book> bookTable;
-    @FXML 
-    private TableColumn<Book,String> bookNameColumn;
-    @FXML 
-    private TableColumn<Book,String> bookTypeColumn;
+    @FXML
+    private TableColumn<Book, String> bookNameColumn;
+    @FXML
+    private TableColumn<Book, String> bookTypeColumn;
+    @FXML
+    private TableColumn<Book, String> bookUserColumn;
     @FXML
     private Label nameLbl;
     @FXML
@@ -61,50 +68,79 @@ public class BookController {
     private Label prixLabel;
     @FXML
     private ImageView imgView;
-    @FXML 
+    @FXML
     private TextField searchBook;
-    @FXML 
+    @FXML
     private ComboBox<Category> bookType;
-
+    @FXML
+    private Slider price;
     
+   @FXML 
+   private ComboBox<String> bookTypes;
+
     private ObservableList<Book> data;
-    private ObservableList<Category> types ;
+    private ObservableList<Category> types;
+    private ObservableList<User> user;
+
     BookService bs = new BookService();
     CategoryService cs = new CategoryService();
+    UserService us = new UserService();
     Book b;
+   
 
     public void initialize() {
         System.out.println("=========================================================");
         // TODO
+       
+        
         List<Book> ls = bs.showAllBooks();
         ArrayList<Category> lsc = cs.getAllCategories();
+        ArrayList<User> luc = us.getAllUsers();
         data = FXCollections.observableArrayList();
-        types  =  FXCollections.observableArrayList();
-        lsc.stream().forEach((j)->{
+        types = FXCollections.observableArrayList();
+        user = FXCollections.observableArrayList();
+        lsc.stream().forEach((j) -> {
             types.add(j);
         });
         ls.stream().forEach((j) -> {
             data.add(j);
         });
-        
+        luc.stream().forEach((j) -> {
+            user.add(j);
+        });
+
         bookType.setItems(types);
+                   ObservableList<String> types2 = 
+    FXCollections.observableArrayList(
+        "Tous",
+        "Vendre",
+        "Echange",
+        "Demande"
+    );
+        bookTypes.setItems(types2);
+
         bookTable.setItems(data);
         bookNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
-        bookTypeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType()));
-       // ListeView.setCellFactory((ListView<ProduitHerbo> param) -> new ListViewPHerboItemCell());
+        bookTypeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getNom() + ""));
+        bookUserColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getNom() + ""));
+        // ListeView.setCellFactory((ListView<ProduitHerbo> param) -> new ListViewPHerboItemCell());
         showBookDetails(null);
-       bookTable.getSelectionModel().selectedItemProperty().addListener(
+        bookTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showBookDetails(newValue));
-    }    
-    
-    
+        price.setMax(bs.maxPrice());
+        
+        
+        
+       
+    }
+
     public void showBookDetails(Book p) {
         if (p != null) {
             nameLbl.setText(p.getNom());
             descriptionLbl.setText(p.getDiscreption());
             typeLbl.setText(p.getType());
-            prixLabel.setText(p.getPrix()+"");
-            Image image = new Image("http://localhost/appJava/"+p.getImage());
+            prixLabel.setText(p.getPrix() + "");
+            Image image = new Image("http://localhost/appJava/" + p.getImage());
             imgView.setImage(image);
         } else {
             nameLbl.setText("");
@@ -114,8 +150,9 @@ public class BookController {
             //imgLabel.setText("");
         }
     }
+
     @FXML
-    private void handleDeleteBook(){
+    private void handleDeleteBook() {
         int selectedIndex = bookTable.getSelectionModel().getSelectedIndex();
         Book selectedBook = bookTable.getSelectionModel().getSelectedItem();
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
@@ -140,9 +177,8 @@ public class BookController {
         }
     }
 
-    
     @FXML
-    private void handleAddBook(){
+    private void handleAddBook() {
         Book book = new Book();
         boolean okClicked = showBookEditDialog(book);
         System.out.println(okClicked);
@@ -152,31 +188,33 @@ public class BookController {
         }
 
     }
+
     @FXML
-    private void handleEditBook(){
+    private void handleEditBook() {
 
         Book selectedBook = bookTable.getSelectionModel().getSelectedItem();
-    if (selectedBook !=null) {
-        boolean okClicked = showBookEditDialog(selectedBook);
-        if (okClicked) {
-            showBookDetails(selectedBook);
-               bs.editBook(selectedBook);
+        if (selectedBook != null) {
+            boolean okClicked = showBookEditDialog(selectedBook);
+            if (okClicked) {
+                showBookDetails(selectedBook);
+                bs.editBook(selectedBook);
                 initialize();
-        }
-         } else {
-        // Nothing selected.
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        ////alert.initOwner(Main.getPrimaryStage());
-        alert.setTitle("No Selection");
-        alert.setHeaderText("No Person Selected");
-        alert.setContentText("Please select a book in the table.");
+            }
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            ////alert.initOwner(Main.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a book in the table.");
 
-        alert.showAndWait();
-    
+            alert.showAndWait();
+
+        }
     }
-    }
-     public boolean showBookEditDialog(Book book) {
-     try {
+
+    public boolean showBookEditDialog(Book book) {
+        try {
             FXMLLoader loader2 = new FXMLLoader();
             loader2.setLocation(Main.class.getResource("view/BookEditDialog.fxml"));
             // Create the dialog Stage.
@@ -199,21 +237,52 @@ public class BookController {
             return false;
         }
     }
- 
-      @FXML
-    private void handleSearchBook(){
+
+    @FXML
+    private void handleSearchBook() {
         String txt = searchBook.getText();
-          System.out.println(txt);
-          data = FXCollections.observableArrayList();
-        List<Book> lsc = bs.searchBookByName(txt);
+        Category cate = bookType.getValue();
+        String t =new String();
+        float p=(float)price.getValue();
+               
+
+        System.out.println(txt);
+        System.out.println(cate);
+        System.out.println(p);
+        data = FXCollections.observableArrayList();
+        String test =bookTypes.getSelectionModel().getSelectedItem();
+        try {
+             if(test.equals("Tous")){
+            t="";
+        }
+        else{
+        t=test;
+        
+        }
+        } catch (Exception e) {
+            t="";
+        }
+ 
+       
+        List<Book> lsc = bs.searchBookByName(txt, cate,t,p);
         lsc.stream().forEach((j) -> {
             data.add(j);
         });
         bookTable.setItems(data);
         bookNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
-        bookTypeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType()));
+        bookTypeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getNom()));
+        bookUserColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getNom() + ""));
     }
+
+    @FXML
+    private void handleReset() {
+        bookType.getSelectionModel().clearSelection();
+        bookTypes.setValue("Tous");
+        //  System.out.println(bookType.getValue());
+        price.setValue(0);
+        initialize();
+        
+
     }
   
-
-
+}
