@@ -32,6 +32,7 @@ public class Main extends Application
     static Statement st;
     static ResultSet rst;
     
+    
    
 
     @Override
@@ -50,7 +51,9 @@ public class Main extends Application
 
 
  public static void main(String[] args) {
-        launch(args);
+       
+     launch(args);
+    
         
     
     }

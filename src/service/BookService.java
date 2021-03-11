@@ -6,6 +6,8 @@
 package service;
 
 import Main.MyDB;
+import Util.Levenshtein_distance_algorithm;
+import static Util.Levenshtein_distance_algorithm.levenshtein_distance_algorithm;
 import entity.Book;
 import entity.Category;
 import entity.User;
@@ -16,7 +18,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /**
  *
@@ -189,7 +195,7 @@ public class BookService implements ibook {
         double p = 0;
         float f;
 
-        String sql = "SELECT MAX(Prix) AS price FROM book1  ; ";
+        String sql = "SELECT MAX(Prix) AS price FROM book1   ; ";
         try {
 
             Statement stl = conn.createStatement();
@@ -210,4 +216,33 @@ public class BookService implements ibook {
         return p;
 
     }
+    
+    public  Map<String,Integer> similaire(String s){
+        SortedMap<String,Integer> h = new TreeMap<>();
+        ResultSet rs;
+        String sql ="SELECT * FROM book1 b ;";
+        
+        try {
+           
+            Statement stl = conn.createStatement();
+            rs = stl.executeQuery(sql);
+            while(rs.next()){
+            h.put(rs.getString("b.nom"),levenshtein_distance_algorithm(s,rs.getString("b.nom")));
+            
+            }
+            
+            
+        } catch (SQLException ex) {
+             System.out.println("SQLException: " + ex.getMessage());
+             System.out.println("SQLState: " + ex.getSQLState());
+             System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        
+        
+        
+        
+        return h;
+    
+    }
+    
 }

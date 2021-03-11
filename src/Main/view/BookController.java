@@ -14,9 +14,13 @@ import java.io.IOException;
 import java.net.URL;
 import static java.sql.JDBCType.NULL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,6 +62,10 @@ public class BookController {
     private TableColumn<Book, String> bookTypeColumn;
     @FXML
     private TableColumn<Book, String> bookUserColumn;
+
+    @FXML
+    private ListView simi;
+
     @FXML
     private Label nameLbl;
     @FXML
@@ -74,9 +82,9 @@ public class BookController {
     private ComboBox<Category> bookType;
     @FXML
     private Slider price;
-    
-   @FXML 
-   private ComboBox<String> bookTypes;
+
+    @FXML
+    private ComboBox<String> bookTypes;
 
     private ObservableList<Book> data;
     private ObservableList<Category> types;
@@ -86,13 +94,11 @@ public class BookController {
     CategoryService cs = new CategoryService();
     UserService us = new UserService();
     Book b;
-   
 
     public void initialize() {
         System.out.println("=========================================================");
         // TODO
-       
-        
+
         List<Book> ls = bs.showAllBooks();
         ArrayList<Category> lsc = cs.getAllCategories();
         ArrayList<User> luc = us.getAllUsers();
@@ -110,13 +116,13 @@ public class BookController {
         });
 
         bookType.setItems(types);
-                   ObservableList<String> types2 = 
-    FXCollections.observableArrayList(
-        "Tous",
-        "Vendre",
-        "Echange",
-        "Demande"
-    );
+        ObservableList<String> types2
+                = FXCollections.observableArrayList(
+                        "Tous",
+                        "Vendre",
+                        "Echange",
+                        "Demande"
+                );
         bookTypes.setItems(types2);
 
         bookTable.setItems(data);
@@ -127,11 +133,12 @@ public class BookController {
         showBookDetails(null);
         bookTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showBookDetails(newValue));
+         bookTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> handleSim(newValue));
         price.setMax(bs.maxPrice());
-        
-        
-        
-       
+        String c = "lapin";
+        System.out.println(bs.similaire(c));
+
     }
 
     public void showBookDetails(Book p) {
@@ -242,29 +249,26 @@ public class BookController {
     private void handleSearchBook() {
         String txt = searchBook.getText();
         Category cate = bookType.getValue();
-        String t =new String();
-        float p=(float)price.getValue();
-               
+        String t = new String();
+        float p = (float) price.getValue();
 
         System.out.println(txt);
         System.out.println(cate);
         System.out.println(p);
         data = FXCollections.observableArrayList();
-        String test =bookTypes.getSelectionModel().getSelectedItem();
+        String test = bookTypes.getSelectionModel().getSelectedItem();
         try {
-             if(test.equals("Tous")){
-            t="";
-        }
-        else{
-        t=test;
-        
-        }
+            if (test.equals("Tous")) {
+                t = "";
+            } else {
+                t = test;
+
+            }
         } catch (Exception e) {
-            t="";
+            t = "";
         }
- 
-       
-        List<Book> lsc = bs.searchBookByName(txt, cate,t,p);
+
+        List<Book> lsc = bs.searchBookByName(txt, cate, t, p);
         lsc.stream().forEach((j) -> {
             data.add(j);
         });
@@ -272,6 +276,8 @@ public class BookController {
         bookNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
         bookTypeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getNom()));
         bookUserColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getNom() + ""));
+   
+
     }
 
     @FXML
@@ -281,8 +287,33 @@ public class BookController {
         //  System.out.println(bookType.getValue());
         price.setValue(0);
         initialize();
-        
 
     }
-  
+
+    
+    private void handleSim(Book t) {
+        
+           int i;
+        Integer value;
+        ArrayList<String> list=new ArrayList<>();
+        Map<String, Integer> s = bs.similaire(t.getNom());
+        String key;
+        for (Iterator<Map.Entry<String, Integer>> entries = s.entrySet().iterator(); entries.hasNext();) {
+            Map.Entry<String, Integer> entry = entries.next();
+            key = entry.getKey();
+            value = entry.getValue();
+           
+            if (value != 0 && value < key.length()) {
+               list.add(key);
+            }
+        }
+        simi.getItems().clear();
+        for(i=0;i<=2 && i< list.size() ;i++){
+        
+        simi.getItems().add(list.get(i));
+        
+        }
+       
+    }
+
 }

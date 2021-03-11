@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.view.BookController">
+<AnchorPane id="AnchorPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.view.BookController">
    <children>
       <SplitPane dividerPositions="0.5" layoutY="6.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -45,9 +46,10 @@
                      </columnResizePolicy>
                   </TableView>
                   <ComboBox fx:id="bookType" layoutX="13.0" layoutY="96.0" onAction="#handleSearchBook" onKeyPressed="#handleSearchBook" prefWidth="150.0" promptText="categories" />
-                  <Button layoutX="14.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleReset" text="Reset" />
+                  <Button layoutX="341.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleReset" text="Reset" />
                   <ComboBox fx:id="bookTypes" layoutX="169.0" layoutY="96.0" onAction="#handleSearchBook" prefWidth="150.0" promptText="type" />
                   <Slider fx:id="price" layoutX="179.0" layoutY="42.0" majorTickUnit="10.0" onMouseReleased="#handleSearchBook" showTickLabels="true" />
+                  <ListView fx:id="simi" layoutX="464.0" layoutY="14.0" prefHeight="122.0" prefWidth="311.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="310.0">
