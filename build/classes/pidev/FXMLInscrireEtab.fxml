@@ -6,19 +6,39 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="691.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="pidev.FXMLInscrireEtabController">
+<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLInscrireEtabController">
    <children>
-      <Label layoutX="73.0" layoutY="53.0" lineSpacing="30.0" prefHeight="26.0" prefWidth="117.0" text="Nom Etablissement" />
-      <Label layoutX="73.0" layoutY="160.0" lineSpacing="30.0" prefHeight="26.0" prefWidth="118.0" text="Address" />
-      <Label layoutX="76.0" layoutY="217.0" lineSpacing="30.0" prefHeight="26.0" prefWidth="118.0" text="Discription" />
-      <Label layoutX="73.0" layoutY="99.0" lineSpacing="30.0" prefHeight="26.0" prefWidth="118.0" text="Mot de passe" />
       <TextField fx:id="tfNom_etab" layoutX="225.0" layoutY="54.0" prefHeight="26.0" prefWidth="200.0" />
       <TextField fx:id="tfAddress" layoutX="225.0" layoutY="160.0" prefHeight="26.0" prefWidth="200.0" />
       <TextArea fx:id="tfDiscription" layoutX="225.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="btncancel" layoutX="373.0" layoutY="454.0" mnemonicParsing="false" onAction="#Onclick" text="Cancel" />
-      <Button fx:id="btninscrire" layoutX="298.0" layoutY="454.0" mnemonicParsing="false" onAction="#Onclick" text="Inscrire" />
+      <Button fx:id="btncancel" layoutX="230.0" layoutY="502.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="38.0" prefWidth="186.0" style="-fx-background-color: f26419;" text="Cancel" textFill="WHITE" />
+      <Button fx:id="btninscrire" layoutX="230.0" layoutY="454.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="37.0" prefWidth="186.0" style="-fx-background-color: f26419;" text="Inscrire" textFill="WHITE" />
       <PasswordField fx:id="tfpass" layoutX="224.0" layoutY="100.0" prefHeight="26.0" prefWidth="200.0" />
+      <AnchorPane prefHeight="646.0" prefWidth="222.0" style="-fx-background-color: f26419;">
+         <children>
+            <Label layoutX="36.0" layoutY="51.0" lineSpacing="30.0" prefHeight="27.0" prefWidth="171.0" text="Nom Etablissement" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="163.0" lineSpacing="30.0" prefHeight="27.0" prefWidth="171.0" text="Address" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="102.0" lineSpacing="30.0" prefHeight="27.0" prefWidth="171.0" text="Mot de passe" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="229.0" lineSpacing="30.0" prefHeight="27.0" prefWidth="171.0" text="Discription" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

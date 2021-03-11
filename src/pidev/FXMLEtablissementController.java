@@ -40,6 +40,10 @@ public class FXMLEtablissementController implements Initializable {
     @FXML
     private Text etabname;
     private int tfidd;
+    @FXML
+    private Button btnClubg;
+    @FXML
+    private Button btnClubC;
     
     
 
@@ -80,7 +84,7 @@ public class FXMLEtablissementController implements Initializable {
                FXMLLoader loader=new FXMLLoader(getClass().getResource("FXMLConsulterAdmin.fxml"));
                 Parent Ajouter = (Parent)loader.load();
                 FXMLConsulterAdminController doc=loader.getController();
-                doc.set(tfidd,etabname.getText());
+                doc.set(tfidd,etabname.getText(),1);
                                
                 
                 Scene scene = new Scene(Ajouter);
@@ -126,5 +130,40 @@ public class FXMLEtablissementController implements Initializable {
            }
         }
     }
+
+    @FXML
+    private void GestClub(ActionEvent event) throws IOException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("FXMLAjouterClub.fxml"));
+                Parent Ajouter = (Parent)loader.load();
+                FXMLAjouterClubController doc=loader.getController();
+                doc.set(tfidd,etabname.getText());
+                doc.ShowClubs(tfidd);
+                               
+                
+                Scene scene = new Scene(Ajouter);
+                
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                window.setScene(scene);
+                window.show();
+      
+    }
+
+    @FXML
+    private void Consultclub(ActionEvent event) throws IOException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("FXMLConsulterClub.fxml"));
+                Parent Ajouter = (Parent)loader.load();
+                FXMLConsulterClubController doc=loader.getController();
+                doc.set(tfidd,etabname.getText());
+                
+                               
+                
+                Scene scene = new Scene(Ajouter);
+                
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                window.setScene(scene);
+                window.show();
+    }
+    
+    
     
 }

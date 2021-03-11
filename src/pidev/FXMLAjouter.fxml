@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -9,30 +10,50 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="698.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLAjouterController">
+<AnchorPane id="AnchorPane" prefHeight="698.0" prefWidth="881.0" style="-fx-background-color: f26419;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLAjouterController">
    <children>
-      <Button fx:id="btnajouter" layoutX="25.0" layoutY="559.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="86.0" text="Ajouter" />
+      <Button fx:id="btnajouter" layoutX="25.0" layoutY="559.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="136.0" text="Ajouter">
+         <graphic>
+            <FontAwesomeIconView fill="#26df11" glyphName="CHECK" size="20" />
+         </graphic></Button>
       <Label layoutX="24.0" layoutY="162.0" prefHeight="26.0" prefWidth="175.0" text="Nom du Cours" />
-      <TextField fx:id="tfNom" layoutX="180.0" layoutY="162.0" prefHeight="26.0" prefWidth="142.0" />
+      <TextField fx:id="tfNom" layoutX="180.0" layoutY="162.0" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: ffffff;" />
       <Label layoutX="25.0" layoutY="99.0" prefHeight="26.0" prefWidth="142.0" text="Nom Specialite" />
-      <Button fx:id="btnCancel" layoutX="715.0" layoutY="586.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="98.0" text="Retour" />
-      <Button fx:id="btnupload" layoutX="180.0" layoutY="443.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="98.0" text="Upload" />
+      <Button fx:id="btnupload" layoutX="180.0" layoutY="443.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="186.0" text="Upload">
+         <graphic>
+            <FontAwesomeIconView fill="#ff690f" glyphName="UPLOAD" size="20" />
+         </graphic></Button>
       <Text fx:id="tfupload" layoutX="46.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vide" wrappingWidth="85.98307228088379" />
-      <TextField fx:id="tfspecialite" layoutX="180.0" layoutY="99.0" prefHeight="26.0" prefWidth="142.0" />
+      <TextField fx:id="tfspecialite" layoutX="180.0" layoutY="99.0" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: ffffff;" />
       <Label layoutX="20.0" layoutY="221.0" prefHeight="18.0" prefWidth="136.0" text="Discription" />
-      <TableView fx:id="tabSpec" layoutX="380.0" layoutY="87.0" onMouseClicked="#handleMouseAction" prefHeight="350.0" prefWidth="493.0">
-        <columns>
-          <TableColumn fx:id="colid" prefWidth="63.20001220703125" text="ID Cours" />
-          <TableColumn fx:id="colnom" minWidth="2.4000244140625" prefWidth="147.20001220703125" text="Nom du Cours" />
-            <TableColumn fx:id="colDiscription" prefWidth="119.20001220703125" text="Discription" />
-            <TableColumn fx:id="ColSpec" prefWidth="165.5999755859375" text="Nom du Specialite" />
-        </columns>
-      </TableView>
-      <Button fx:id="Getcours" layoutX="282.0" layoutY="443.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="98.0" text="Get Cours" />
-      <Button fx:id="btnupdate" layoutX="25.0" layoutY="618.0" mnemonicParsing="false" onAction="#HandleUpdate" prefHeight="43.0" prefWidth="86.0" text="Update" />
-      <TextArea fx:id="tfdiscription" layoutX="180.0" layoutY="212.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="btnsupprime" layoutX="124.0" layoutY="618.0" mnemonicParsing="false" onAction="#handleSupprime" prefHeight="43.0" prefWidth="86.0" text="Supprimer" />
+      <Button fx:id="Getcours" layoutX="180.0" layoutY="494.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="186.0" text="Get Cours">
+         <graphic>
+            <FontAwesomeIconView fill="#ff571f" glyphName="DOWNLOAD" size="20" />
+         </graphic></Button>
+      <Button fx:id="btnupdate" layoutX="25.0" layoutY="618.0" mnemonicParsing="false" onAction="#HandleUpdate" prefHeight="43.0" prefWidth="136.0" text="Update">
+         <graphic>
+            <FontAwesomeIconView fill="#fff600" glyphName="WRENCH" size="20" />
+         </graphic></Button>
+      <TextArea fx:id="tfdiscription" layoutX="178.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button fx:id="btnsupprime" layoutX="188.0" layoutY="618.0" mnemonicParsing="false" onAction="#handleSupprime" prefHeight="43.0" prefWidth="136.0" text="Supprimer">
+         <graphic>
+            <FontAwesomeIconView fill="#ff0b0b" glyphName="CUT" size="20" />
+         </graphic></Button>
       <Label layoutX="25.0" layoutY="71.0" prefHeight="18.0" prefWidth="64.0" text="ID Cours :" />
       <Label fx:id="tfid" layoutX="188.0" layoutY="71.0" />
+      <AnchorPane layoutX="380.0" layoutY="-2.0" prefHeight="698.0" prefWidth="502.0" style="-fx-background-color: ffffff;">
+         <children>
+            <TableView fx:id="tabSpec" layoutX="4.0" layoutY="166.0" onMouseClicked="#handleMouseAction" prefHeight="350.0" prefWidth="493.0">
+              <columns>
+                <TableColumn fx:id="colid" prefWidth="63.20001220703125" text="ID Cours" />
+                <TableColumn fx:id="colnom" minWidth="2.4000244140625" prefWidth="147.20001220703125" text="Nom du Cours" />
+                  <TableColumn fx:id="colDiscription" prefWidth="119.20001220703125" text="Discription" />
+                  <TableColumn fx:id="ColSpec" prefWidth="165.5999755859375" text="Nom du Specialite" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnCancel" layoutX="389.0" layoutY="548.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="98.0" style="-fx-background-color: f26419;" text="Retour" />
+            <TextField fx:id="filter" layoutX="14.0" layoutY="108.0" prefHeight="26.0" prefWidth="326.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -5,6 +5,7 @@
  */
 package pidev;
 
+import Entités.Cours;
 import java.awt.Dialog;
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,10 +40,13 @@ import javafx.stage.Window;
 import java.sql.PreparedStatement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import services.ServiceCours;
 
 /**
  * FXML Controller class
@@ -89,6 +93,8 @@ public class FXMLAjouterController implements Initializable {
     private Button btnsupprime;
     @FXML
     private Label tfid;
+    @FXML
+    private TextField filter;
     
     /**
      * Initializes the controller class.
@@ -107,10 +113,13 @@ public class FXMLAjouterController implements Initializable {
     private void Onclick(ActionEvent event) throws IOException, SQLException {
         if(event.getSource()==btnajouter){
             if (verif()==true && verifupload()==true){
-                AjouterEtab();
+                Cours cour=new Cours(tfdiscription.getText(), tfspecialite.getText(),tfNom.getText(), idd);
+                ServiceCours sp=new ServiceCours();
+                sp.AjouterEtab(cour);
 
                 AjouterCours();
             AlertBox.display("ALERT", "Votre Cours est ajouter");
+            ShowCours(idd);
             }else{
           
             AlertBox.display("ALERT", "Specialite Ou fichier pdf n'existe pas");
@@ -157,23 +166,8 @@ public class FXMLAjouterController implements Initializable {
             System.out.println("error");
             return null;
         }
-    }
+    }  
     
-    private void AjouterEtab() throws SQLException{ 
-        
-        Connection conn = getConnetion();
-        Statement st;
-        String query2="SELECT ID_SPEC FROM speciality WHERE Nom='"+tfspecialite.getText()+"'";
-        st = conn.createStatement();
-        ResultSet rs2=st.executeQuery(query2);
-        while(rs2.next()){
-            int id_spec=rs2.getInt("ID_SPEC");
-         String query = "INSERT INTO Cours (ID_Etab,Nom,Discription,ID_SPEC) VALUES("+idd+",'"+tfNom.getText()+"','"+tfdiscription.getText()+"',"+id_spec+")";
-        executeQuery(query);
-        
-    }
-        ShowCours(idd);
-    }
     
     private void executeQuery(String query) {
        Connection conn = getConnetion();
@@ -234,53 +228,47 @@ public class FXMLAjouterController implements Initializable {
 				}
     }}
     
-        public ObservableList<Cours> getCoursList(int id){
-        ObservableList<Cours> CoursList = FXCollections.observableArrayList();
-        Connection conn = getConnetion();
-        String query= "SELECT * FROM Cours where ID_Etab="+id;
-            System.out.println(idd);
-        Statement st;
-        ResultSet rs;
-        
-        try{
-            st = conn.createStatement();
-            rs = st.executeQuery(query);
-            Cours cour;
-            while(rs.next()){
-                 int id_spec=rs.getInt("ID_SPEC");
-                                                                                                                                                                                                                                     String query1="SELECT Nom FROM speciality WHERE ID_SPEC="+id_spec;
-                 
-                int id_cours=rs.getInt("ID_Cours");
-                String Nom_cours=rs.getString("Nom");
-                String Discription=rs.getString("Discription");
-                Statement st1;
-                 st1=conn.createStatement();
-                ResultSet rs1=st1.executeQuery(query1);
-                while(rs1.next()){
-                   
-                    cour=new Cours(id_cours, Discription,rs1.getString("Nom"), Nom_cours);
-                    System.out.println(cour.toString());
-                    
-                CoursList.add(cour);
-                }
-                
-            }
-        }catch(Exception ex){
-            ex.printStackTrace();
-            
-        }
-        return CoursList;
-        } 
         
         
         public void ShowCours(int id){
-        ObservableList<Cours> list = getCoursList(id);
+            ServiceCours sp = new ServiceCours();
+        ObservableList<Cours> list = sp.getCoursList(id);
         
         colid.setCellValueFactory(new PropertyValueFactory<Cours, Integer>("ID_Cours"));
         colnom.setCellValueFactory(new PropertyValueFactory<Cours, String>("Coursname"));
         colDiscription.setCellValueFactory(new PropertyValueFactory<Cours, String>("Discription"));
         ColSpec.setCellValueFactory(new PropertyValueFactory<Cours, String>("nom_spec"));
         tabSpec.setItems(list);
+        FilteredList<Cours> filteredData = new FilteredList<>(list, b -> true);
+		
+		        filter.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Cours -> {
+	
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+			
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Cours.getCoursname().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				
+				} else if(Cours.getNom_spec().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                                 return true;   
+                                }
+                                
+				     else  
+				    	 return false; 
+			});
+		});
+		
+		
+		SortedList<Cours> sortedData = new SortedList<>(filteredData);
+		
+		
+		sortedData.comparatorProperty().bind(tabSpec.comparatorProperty());
+		
+		tabSpec.setItems(sortedData);
     
         
     }
@@ -306,36 +294,25 @@ public class FXMLAjouterController implements Initializable {
 
     @FXML
     private void HandleUpdate(ActionEvent event) throws SQLException, FileNotFoundException {
-        if (verif()==true && verifupload()==true){
-                ModifCours();
-
-                AjouterCours();
+        if (verif()==true ){
+                ServiceCours sp=new ServiceCours();
+             Cours c=new Cours(Integer.parseInt(tfid.getText()), tfdiscription.getText(), tfspecialite.getText(), tfNom.getText());
+             sp.modifier(c);
+         ShowCours(idd);
+         if ( verifupload()==true){
+           AjouterCours();  
+                }
             AlertBox.display("ALERT", "Votre Cours est modifier");
             }else{
           
             AlertBox.display("ALERT", "Specialite Ou fichier pdf n'existe pas");
             }
     }
-
-    private void ModifCours() throws SQLException{
-             Connection conn = getConnetion();
-        Statement st;
-        String query2="SELECT ID_SPEC FROM speciality WHERE Nom='"+tfspecialite.getText()+"'";
-        st = conn.createStatement();
-        ResultSet rs2=st.executeQuery(query2);
-        while(rs2.next()){
-            int id_spec=rs2.getInt("ID_SPEC");
-         String query = "UPDATE Cours SET Nom='"+tfNom.getText()+"',Discription='"+tfdiscription.getText()+"',ID_SPEC="+id_spec+" WHERE ID_Cours="+tfid.getText();
-        executeQuery(query);
-       
-    } ShowCours(idd);
-        
-        
-    }
     @FXML
-    private void handleSupprime(ActionEvent event) { 
-        String query="DELETE from Cours where ID_Cours="+tfid.getText();
-        executeQuery(query);
+    private void handleSupprime(ActionEvent event) throws SQLException { 
+        ServiceCours sp=new ServiceCours();
+        Cours c=new Cours(Integer.parseInt(tfid.getText()));
+        sp.Supprimer(c);
         ShowCours(idd);
         
         

@@ -10,29 +10,33 @@
 
 <AnchorPane id="AnchorPane" prefHeight="598.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLModifetabController">
    <children>
-      <Label layoutX="54.0" layoutY="33.0" prefHeight="35.0" prefWidth="218.0" text="Nom etablissemet :">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="54.0" layoutY="89.0" prefHeight="35.0" prefWidth="218.0" text="Addresse :">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="54.0" layoutY="148.0" prefHeight="35.0" prefWidth="218.0" text="Discription :">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
       <TextField fx:id="tfNom" layoutX="308.0" layoutY="33.0" prefHeight="35.0" prefWidth="402.0" />
       <TextField fx:id="tfAddress" layoutX="308.0" layoutY="89.0" prefHeight="35.0" prefWidth="402.0" />
       <TextArea fx:id="tfDiscription" layoutX="308.0" layoutY="148.0" prefHeight="203.0" prefWidth="402.0" />
       <PasswordField fx:id="tfpassnew" layoutX="308.0" layoutY="446.0" prefHeight="35.0" prefWidth="402.0" />
-      <Label layoutX="54.0" layoutY="446.0" prefHeight="35.0" prefWidth="218.0" text="Votre nouveau mot de passe" />
-      <Button fx:id="btncancel" layoutX="583.0" layoutY="389.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="35.0" prefWidth="126.0" text="Done" />
-      <Button fx:id="Btnmodif" layoutX="446.0" layoutY="389.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="35.0" prefWidth="126.0" text="Modifier" />
-      <Button fx:id="btnsupprime" layoutX="300.0" layoutY="389.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="35.0" prefWidth="126.0" text="Supprimer Compte" />
-      <Button fx:id="btnpass" layoutX="584.0" layoutY="495.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="35.0" prefWidth="126.0" text="Change pass" />
+      <Button fx:id="btncancel" layoutX="583.0" layoutY="389.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: f26419;" text="Done" textFill="WHITE" />
+      <Button fx:id="Btnmodif" layoutX="446.0" layoutY="389.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: f26419;" text="Modifier" textFill="WHITE" />
+      <Button fx:id="btnsupprime" layoutX="308.0" layoutY="389.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: f26419;" text="Supprimer Compte" textFill="WHITE" />
+      <Button fx:id="btnpass" layoutX="584.0" layoutY="495.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: f26419;" text="Change pass" textFill="WHITE" />
+      <AnchorPane prefHeight="605.0" prefWidth="304.0" style="-fx-background-color: f26419;">
+         <children>
+            <Label layoutX="43.0" layoutY="30.0" prefHeight="35.0" prefWidth="218.0" text="Nom etablissemet :" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="88.0" prefHeight="35.0" prefWidth="218.0" text="Addresse :" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="145.0" prefHeight="35.0" prefWidth="218.0" text="Discription :" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="438.0" prefHeight="35.0" prefWidth="218.0" text="Votre nouveau mot de passe" textFill="WHITE" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -7,18 +8,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="632.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLLoginetab">
+<AnchorPane id="AnchorPane" prefHeight="632.0" prefWidth="816.0" style="-fx-background-color: 0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLLoginetab">
    <children>
-      <Label layoutX="263.0" layoutY="28.0" prefHeight="68.0" prefWidth="270.0" text="Etablissement">
+      <Label layoutX="460.0" layoutY="83.0" prefHeight="68.0" prefWidth="339.0" text="Etablissement Login" textFill="#f26419">
          <font>
             <Font size="38.0" />
          </font>
       </Label>
-      <Label layoutX="140.0" layoutY="166.0" prefHeight="36.0" prefWidth="143.0" text="Etablissement Login" />
-      <Label layoutX="140.0" layoutY="242.0" prefHeight="36.0" prefWidth="118.0" text="Mot de passe" />
-      <TextField fx:id="tfLogin" layoutX="299.0" layoutY="171.0" prefHeight="26.0" prefWidth="174.0" />
-      <PasswordField fx:id="tfpassword" layoutX="299.0" layoutY="247.0" prefHeight="26.0" prefWidth="174.0" />
-      <Button fx:id="btnlogin" layoutX="334.0" layoutY="306.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="58.0" prefWidth="118.0" text="Login" />
-      <Button fx:id="btninscrire" layoutX="334.0" layoutY="399.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="58.0" prefWidth="118.0" text="Inscrire" />
+      <TextField fx:id="tfLogin" layoutX="543.0" layoutY="268.0" prefHeight="26.0" prefWidth="174.0" promptText="Login Etablissement" />
+      <PasswordField fx:id="tfpassword" layoutX="543.0" layoutY="325.0" prefHeight="26.0" prefWidth="174.0" promptText="Mot de passe" />
+      <Button fx:id="btnlogin" layoutX="571.0" layoutY="391.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="46.0" prefWidth="118.0" style="-fx-background-color: f26419;" text="Login" textFill="#fffdfd" />
+      <AnchorPane layoutY="-1.0" prefHeight="639.0" prefWidth="394.0" style="-fx-background-color: f26419;">
+         <children>
+            <Button fx:id="btninscrire" layoutX="108.0" layoutY="395.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="46.0" prefWidth="118.0" style="-fx-background-color: #ededed;" text="Inscrire" textFill="#ff6315" />
+            <Label layoutX="57.0" layoutY="281.0" prefHeight="90.0" prefWidth="280.0" text="Si Tu n'as pas de Compte" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView fill="WHITE" glyphName="BOOK" layoutX="152.0" layoutY="257.0" size="50" wrappingWidth="14.285714149475098" />
+         </children>
+      </AnchorPane>
+      <FontAwesomeIconView fill="#f26419" glyphName="KEY" layoutX="507.0" layoutY="342.0" size="20" />
+      <FontAwesomeIconView fill="#f26419" glyphName="USER" layoutX="510.0" layoutY="285.0" size="20" />
+      <FontAwesomeIconView fill="#f26419" glyphName="USERS" layoutX="614.0" layoutY="200.0" size="30" text="" />
    </children>
 </AnchorPane>

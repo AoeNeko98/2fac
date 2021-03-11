@@ -1,32 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" prefHeight="709.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLConsulterAdminController">
+<AnchorPane id="AnchorPane" prefHeight="709.0" prefWidth="885.0" style="-fx-background-color: f26419;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLConsulterAdminController">
    <children>
-      <TextField fx:id="filterField" layoutX="256.0" layoutY="14.0" prefHeight="35.0" prefWidth="242.0" />
-      <TableView fx:id="tvetab" layoutX="210.0" layoutY="100.0" onMouseClicked="#Onhold" prefHeight="414.0" prefWidth="638.0">
-        <columns>
-          <TableColumn fx:id="colid" prefWidth="66.39996337890625" text="ID Cours" />
-            <TableColumn fx:id="colcoursname" prefWidth="112.00006103515625" text="Nom du cours" />
-            <TableColumn fx:id="coldescription" prefWidth="158.4000244140625" text="Description" />
-            <TableColumn fx:id="colspec" prefWidth="150.4000244140625" text="Nom specialite" />
-            <TableColumn fx:id="coletab" prefWidth="151.2000732421875" text="Nom etablissement" />
-        </columns>
-      </TableView>
-      <Label layoutX="14.0" layoutY="105.0" prefHeight="18.0" prefWidth="108.0" text="Nom du Cours" />
-      <Label layoutX="14.0" layoutY="160.0" prefHeight="18.0" prefWidth="90.0" text="Description" />
-      <Button fx:id="btnGetcours" layoutX="210.0" layoutY="561.0" mnemonicParsing="false" onAction="#onCick" prefHeight="46.0" prefWidth="126.0" text="Telecharger cours" />
-      <Button fx:id="btncancel" layoutX="592.0" layoutY="561.0" mnemonicParsing="false" onAction="#onCick" prefHeight="46.0" prefWidth="126.0" text="Retour" />
-      <Label layoutX="156.0" layoutY="14.0" prefHeight="35.0" prefWidth="76.0" text="Filtre" />
-      <Label layoutX="14.0" layoutY="80.0" prefHeight="18.0" prefWidth="102.0" text="ID Cours :" />
-      <Label fx:id="tfid" layoutX="118.0" layoutY="80.0" prefHeight="18.0" prefWidth="76.0" />
-      <Label fx:id="tfNom" layoutX="118.0" layoutY="105.0" prefHeight="18.0" prefWidth="76.0" />
-      <Label fx:id="tfdiscription" layoutX="108.0" layoutY="161.0" prefHeight="146.0" prefWidth="119.0" />
+      <Label layoutX="14.0" layoutY="105.0" prefHeight="18.0" prefWidth="108.0" text="Nom du Cours" textFill="WHITE" />
+      <Label layoutX="14.0" layoutY="160.0" prefHeight="18.0" prefWidth="90.0" text="Description" textFill="WHITE" />
+      <Label layoutX="14.0" layoutY="80.0" prefHeight="18.0" prefWidth="102.0" text="ID Cours :" textFill="WHITE" />
+      <Label fx:id="tfid" layoutX="118.0" layoutY="80.0" prefHeight="18.0" prefWidth="76.0" textFill="WHITE" />
+      <Label fx:id="tfNom" layoutX="118.0" layoutY="105.0" prefHeight="18.0" prefWidth="76.0" textFill="WHITE" />
+      <Label fx:id="tfdiscription" layoutX="108.0" layoutY="161.0" prefHeight="146.0" prefWidth="119.0" textFill="WHITE" />
+      <Rating fx:id="Courrate" layoutX="28.0" layoutY="380.0" rating="0.0" />
+      <Button fx:id="btnrate" layoutX="53.0" layoutY="430.0" mnemonicParsing="false" onAction="#Clickrate" prefHeight="46.0" prefWidth="126.0" text="Submit" />
+      <AnchorPane layoutX="203.0" layoutY="-11.0" prefHeight="730.0" prefWidth="685.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label layoutX="70.0" layoutY="74.0" prefHeight="35.0" prefWidth="76.0" text="Filtre" textFill="#f26419">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tvetab" layoutX="7.0" layoutY="120.0" onMouseClicked="#Onhold" prefHeight="414.0" prefWidth="670.0">
+              <columns>
+                <TableColumn fx:id="colid" prefWidth="66.39996337890625" text="ID Cours" />
+                  <TableColumn fx:id="colcoursname" prefWidth="112.00006103515625" text="Nom du cours" />
+                  <TableColumn fx:id="coldescription" prefWidth="158.4000244140625" text="Description" />
+                  <TableColumn fx:id="colspec" prefWidth="150.4000244140625" text="Nom specialite" />
+                  <TableColumn fx:id="coletab" prefWidth="123.2000732421875" text="Nom etablissement" />
+                  <TableColumn fx:id="colRate" prefWidth="55.199951171875" text="Rate" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnGetcours" layoutX="14.0" layoutY="549.0" mnemonicParsing="false" onAction="#onCick" prefHeight="46.0" prefWidth="169.0" style="-fx-background-color: f26419;" text="Telecharger cours" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="DOWNLOAD" size="20" />
+               </graphic>
+            </Button>
+            <Button fx:id="btncancel" layoutX="514.0" layoutY="549.0" mnemonicParsing="false" onAction="#onCick" prefHeight="46.0" prefWidth="157.0" style="-fx-background-color: f26419;" text="Retour" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="REPLY" size="20" />
+               </graphic>
+            </Button>
+            <TextField fx:id="filterField" layoutX="121.0" layoutY="74.0" prefHeight="35.0" prefWidth="242.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

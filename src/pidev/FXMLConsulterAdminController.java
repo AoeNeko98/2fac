@@ -5,6 +5,8 @@
  */
 package pidev;
 
+import Entités.Cours;
+import Entités.Rate;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -38,9 +40,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 import org.jpedal.PdfDecoder;
 import org.jpedal.exception.PdfException;
+import services.ServiceCours;
 import sun.reflect.Reflection;
 
 /**
@@ -66,6 +71,8 @@ public class FXMLConsulterAdminController implements Initializable {
     private TableColumn<Cours, String> colspec;
     @FXML
     private TableColumn<Cours, String> coletab;
+     @FXML
+    private TableColumn<Cours, Double> colRate;
     @FXML
     private Button btnGetcours;
     @FXML
@@ -77,9 +84,15 @@ public class FXMLConsulterAdminController implements Initializable {
     @FXML
     private Label tfdiscription;
     public int id;
+    public int id_user;
     public String nom;
     @FXML
     private TextField filterField;
+    @FXML
+    private Button btnrate;
+    @FXML
+    private Rating Courrate;
+  
 
     /**
      * Initializes the controller class.
@@ -90,10 +103,11 @@ public class FXMLConsulterAdminController implements Initializable {
        ShowCours();
     }      
 
-        public void set(int ids,String noms){
+        public void set(int ids,String noms,int id_us){
             
            id=ids;
            nom=noms;
+           id_user=id_us;
            
         }
   
@@ -144,7 +158,7 @@ public class FXMLConsulterAdminController implements Initializable {
         }
     }
     
-     public void Getcours() throws SQLException, FileNotFoundException, IOException, SQLException, SQLException, SQLException, SQLException, SQLException, SQLException, SQLException, FileNotFoundException, SQLException, SQLException, IOException{
+     public void Getcours() throws  IOException,   SQLException, FileNotFoundException{
         Connection conn=getConnetion();
         Statement st;
         ResultSet rs;
@@ -181,6 +195,7 @@ public class FXMLConsulterAdminController implements Initializable {
                  int id_spec=rs.getInt("ID_SPEC");
                  String query1="SELECT Nom FROM speciality WHERE ID_SPEC="+id_spec;
                  String query2="SELECT Nom FROM etablissement WHERE ID_Etab="+rs.getInt("ID_Etab");
+                 String query3="SELECT AVG(Rate) FROM rating WHERE ID_Cours="+rs.getInt("ID_Cours");
                  
                 int id_cours=rs.getInt("ID_Cours");
                 String Nom_cours=rs.getString("Nom");
@@ -188,11 +203,13 @@ public class FXMLConsulterAdminController implements Initializable {
                 Statement st1;
                  st1=conn.createStatement();
                  Statement st2=conn.createStatement();
+                 Statement st3=conn.createStatement();
                 ResultSet rs1=st1.executeQuery(query1);
                 ResultSet rs2=st2.executeQuery(query2);
-                while(rs1.next() && rs2.next()){
+                ResultSet rs3=st3.executeQuery(query3);
+                while(rs1.next() && rs2.next() && rs3.next()){
                    
-                    cour=new Cours(id_cours, Discription,rs1.getString("Nom"), Nom_cours,rs2.getString("Nom"));
+                    cour=new Cours(id_cours, Discription,rs1.getString("Nom"), Nom_cours,rs2.getString("Nom"),rs3.getDouble(1));
                     System.out.println(cour.toString());
                     
                 CoursList.add(cour);
@@ -214,6 +231,7 @@ public class FXMLConsulterAdminController implements Initializable {
         coldescription.setCellValueFactory(new PropertyValueFactory<Cours, String>("Discription"));
         colspec.setCellValueFactory(new PropertyValueFactory<Cours, String>("nom_spec"));
         coletab.setCellValueFactory(new PropertyValueFactory<Cours, String>("Etabnom"));
+        colRate.setCellValueFactory(new PropertyValueFactory<Cours, Double>("rate"));
         tvetab.setItems(list);
           FilteredList<Cours> filteredData = new FilteredList<>(list, b -> true);
 		
@@ -283,6 +301,16 @@ public class FXMLConsulterAdminController implements Initializable {
        tfdiscription.setText(cours.getDiscription());
        tfid.setText(String.valueOf(cours.getID_Cours()));
     }
+
+    @FXML
+    private void Clickrate(ActionEvent event) throws SQLException {
+        ServiceCours sp=new ServiceCours();
+        Rate c=new Rate(id_user, Integer.parseInt(tfid.getText()), Courrate.getRating());
+        sp.Ajoutrate(c);
+        ShowCours();
+        
+    }
+    
 
         
         
