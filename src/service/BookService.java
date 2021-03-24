@@ -56,7 +56,8 @@ public class BookService implements ibook {
 
     @Override
     public void editBook(Book b) {
-        String sql = "UPDATE `book1` SET `nom` = '" + b.getNom() + "', `type` = '" + b.getType() + "', `description` = '" + b.getDiscreption() + "', `Prix` = '" + b.getPrix() + "', `Image` = '" + b.getImage() + "', `categorie` = '" + b.getCategory().getId() + "' WHERE `book1`.`id` = " + b.getId() + "', `user` = '";
+        String sql = "UPDATE `book1` SET `nom` = '" + b.getNom() + "', `type` = '" + b.getType() + "', `description` = '" + b.getDiscreption() + "', `Prix` = '" + b.getPrix() + "', `Image` = '" + b.getImage() + "', `categorie` = '" + b.getCategory().getId()
+                + "' WHERE `book1`.`id` = '" + b.getId() + "';";
         try {
             Statement stl = conn.createStatement();
             stl.executeUpdate(sql);
@@ -111,9 +112,55 @@ public class BookService implements ibook {
         String sql;
         if (cate != null) {
 
-            sql = "SELECT * FROM book1 b inner join user u on b.user= u.id  inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%' && c.nom like '%" + cate + "%' && b.type like '%" + t + "%' && b.prix >='"+p+"';";
+            sql = "SELECT * FROM book1 b inner join user u on b.user= u.id  inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%' && c.nom like '%" + cate + "%' && b.type like '%" + t + "%' && b.prix >='" + p + "';";
         } else {
-            sql = "SELECT * FROM book1 b inner join user u on b.user= u.id inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%'&& b.type like '%" + t + "%' && b.prix >= '"+p+"' ;";
+            sql = "SELECT * FROM book1 b inner join user u on b.user= u.id inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%'&& b.type like '%" + t + "%' && b.prix >= '" + p + "' ;";
+        }
+
+        try {
+            Statement stl = conn.createStatement();
+            rs = stl.executeQuery(sql);
+            while (rs.next()) {
+                book = new Book();
+                Category cat = new Category();
+                User us = new User();
+                cat.setId(rs.getInt("c.id"));
+                cat.setDescription(rs.getString("c.description"));
+                cat.setNom(rs.getString("c.nom"));
+                us.setId(rs.getInt("u.id"));
+                us.setNom(rs.getString("u.nom"));
+                book.setCategory(cat);
+                book.setUser(us);
+                book.setNom(rs.getString("b.nom"));
+                book.setType(rs.getString("b.type"));
+                book.setDiscreption(rs.getString("b.description"));
+                book.setId(rs.getInt("b.id"));
+                book.setPrix(rs.getFloat("b.prix"));
+                book.setImage(rs.getString("b.image"));
+
+                System.out.println(book.toString());
+                ls.add(book);
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        return ls;
+
+    }
+
+    public List<Book> searchMyBookByName(String name, Category cate, String t, float p) {
+
+        List<Book> ls = new ArrayList<>();
+        ResultSet rs;
+        Book book;
+        String sql;
+        if (cate != null) {
+
+            sql = "SELECT * FROM book1 b inner join user u on b.user= u.id  inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%' && c.nom like '%" + cate + "%' && b.type like '%" + t + "%' && b.prix >='" + p + "' && b.user=1 ;";
+        } else {
+            sql = "SELECT * FROM book1 b inner join user u on b.user= u.id inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%'&& b.type like '%" + t + "%' && b.prix >= '" + p + "' && b.user=1 ;";
         }
 
         try {
@@ -189,6 +236,46 @@ public class BookService implements ibook {
 
     }
 
+    public List<Book> showMyBooks() {
+        List<Book> ls = new ArrayList<>();
+        ResultSet rs;
+        Book book;
+        String sql = "SELECT * FROM book1 b inner join categorie c on b.categorie = c.id inner join user u on b.user = u.id WHERE b.user = 1 ;";
+        try {
+            Statement stl = conn.createStatement();
+            rs = stl.executeQuery(sql);
+            while (rs.next()) {
+                book = new Book();
+                Category cat = new Category();
+                User us = new User();
+
+                us.setId(rs.getInt("u.id"));
+                us.setNom(rs.getString("u.nom"));
+                cat.setId(rs.getInt("c.id"));
+                cat.setDescription(rs.getString("c.description"));
+                cat.setNom(rs.getString("c.nom"));
+
+                book.setCategory(cat);
+                book.setNom(rs.getString("b.nom"));
+                book.setType(rs.getString("b.type"));
+                book.setDiscreption(rs.getString("b.description"));
+                book.setId(rs.getInt("b.id"));
+                book.setPrix(rs.getFloat("b.prix"));
+                book.setImage(rs.getString("b.image"));
+                book.setUser(us);
+
+                System.out.println(book.toString());
+                ls.add(book);
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        return ls;
+
+    }
+
     public double maxPrice() {
 
         ResultSet rs;
@@ -200,10 +287,10 @@ public class BookService implements ibook {
 
             Statement stl = conn.createStatement();
             rs = stl.executeQuery(sql);
-            while(rs.next()){
-                
+            while (rs.next()) {
+
                 f = rs.getFloat("price");
-              
+
                 p = (double) f;
             }
 
@@ -216,33 +303,29 @@ public class BookService implements ibook {
         return p;
 
     }
-    
-    public  Map<String,Integer> similaire(String s){
-        SortedMap<String,Integer> h = new TreeMap<>();
+
+    public Map<String, Integer> similaire(String s) {
+        SortedMap<String, Integer> h = new TreeMap<>();
         ResultSet rs;
-        String sql ="SELECT * FROM book1 b ;";
-        
+        String sql = "SELECT * FROM book1 b ;";
+
         try {
-           
+
             Statement stl = conn.createStatement();
             rs = stl.executeQuery(sql);
-            while(rs.next()){
-            h.put(rs.getString("b.nom"),levenshtein_distance_algorithm(s,rs.getString("b.nom")));
-            
+            while (rs.next()) {
+                h.put(rs.getString("b.nom"), levenshtein_distance_algorithm(s, rs.getString("b.nom")));
+
             }
-            
-            
+
         } catch (SQLException ex) {
-             System.out.println("SQLException: " + ex.getMessage());
-             System.out.println("SQLState: " + ex.getSQLState());
-             System.out.println("VendorError: " + ex.getErrorCode());
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
         }
-        
-        
-        
-        
+
         return h;
-    
+
     }
-    
+
 }

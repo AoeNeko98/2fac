@@ -35,7 +35,7 @@
                         <Label text="Rechercher" />
                      </children>
                   </GridPane>
-                  <TableView fx:id="bookTable" prefHeight="208.0" prefWidth="174.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+                  <TableView fx:id="bookTable" layoutX="14.0" layoutY="130.0" prefHeight="208.0" prefWidth="174.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-14.0" AnchorPane.topAnchor="130.0">
                     <columns>
                       <TableColumn fx:id="bookNameColumn" prefWidth="91.99996644258499" text="Nom du livre" />
                       <TableColumn fx:id="bookTypeColumn" prefWidth="87.20000305175782" text="Catégorie" />

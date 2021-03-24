@@ -4,92 +4,75 @@
  * and open the template in the editor.
  */
 package Util;
-import java.util.*; 
 
+import java.util.*;
 
 /**
  *
  * @author Aoe Neko 98
  */
 public class Levenshtein_distance_algorithm {
-    
+
     // Java implementation of Levenshtein distance calculation 
 // Using Dynamic Programming (Optimised solution) 
+    public static int levenshtein_distance_algorithm(String str1, String str2) {
 
+        // A 2-D matrix to store previously calculated 
+        // answers of subproblems in order 
+        // to obtain the final 
+        int[][] dp = new int[str1.length() + 1][str2.length() + 1];
 
+        for (int i = 0; i <= str1.length(); i++) {
+            for (int j = 0; j <= str2.length(); j++) {
 
-     public static int levenshtein_distance_algorithm(String str1, String str2) { 
+                // If str1 is empty, all characters of 
+                // str2 are inserted into str1, which is of 
+                // the only possible method of conversion 
+                // with minimum operations. 
+                if (i == 0) {
+                    dp[i][j] = j;
+                } // If str2 is empty, all characters of str1 
+                // are removed, which is the only possible 
+                // method of conversion with minimum 
+                // operations. 
+                else if (j == 0) {
+                    dp[i][j] = i;
+                } else {
+                    // find the minimum among three 
+                    // operations below 
 
-		// A 2-D matrix to store previously calculated 
-		// answers of subproblems in order 
-		// to obtain the final 
+                    dp[i][j] = minm_edits(dp[i - 1][j - 1]
+                            + NumOfReplacement(str1.charAt(i - 1), str2.charAt(j - 1)), // replace 
+                            dp[i - 1][j] + 1, // delete 
+                            dp[i][j - 1] + 1); // insert 
+                }
+            }
+        }
 
-		int[][] dp = new int[str1.length() + 1][str2.length() + 1]; 
+        return dp[str1.length()][str2.length()];
+    }
 
-		for (int i = 0; i <= str1.length(); i++) 
-		{ 
-			for (int j = 0; j <= str2.length(); j++) { 
+    // check for distinct characters 
+    // in str1 and str2 
+    public static int NumOfReplacement(char c1, char c2) {
+        return c1 == c2 ? 0 : 1;
+    }
 
-				// If str1 is empty, all characters of 
-				// str2 are inserted into str1, which is of 
-				// the only possible method of conversion 
-				// with minimum operations. 
-				if (i == 0) { 
-					dp[i][j] = j; 
-				} 
+    // receives the count of different 
+    // operations performed and returns the 
+    // minimum value among them. 
+    public static int minm_edits(int... nums) {
 
-				// If str2 is empty, all characters of str1 
-				// are removed, which is the only possible 
-				// method of conversion with minimum 
-				// operations. 
-				else if (j == 0) { 
-					dp[i][j] = i; 
-				} 
+        return Arrays.stream(nums).min().orElse(
+                Integer.MAX_VALUE);
+    }
 
-				else { 
-					// find the minimum among three 
-					// operations below 
+    // Driver Code 
+    public static void main(String args[]) {
 
-					
-					dp[i][j] = minm_edits(dp[i - 1][j - 1] 
-						+ NumOfReplacement(str1.charAt(i - 1),str2.charAt(j - 1)), // replace 
-						dp[i - 1][j] + 1, // delete 
-						dp[i][j - 1] + 1); // insert 
-				} 
-			} 
-		} 
+        String s1 = "samer";
+        String s2 = "semer";
 
-		return dp[str1.length()][str2.length()]; 
-	} 
-
-	// check for distinct characters 
-	// in str1 and str2 
-	
-	public static int NumOfReplacement(char c1, char c2) 
-	{ 
-		return c1 == c2 ? 0 : 1; 
-	} 
-
-	// receives the count of different 
-	// operations performed and returns the 
-	// minimum value among them. 
-	
-	public static int minm_edits(int... nums) 
-	{ 
-
-		return Arrays.stream(nums).min().orElse( 
-			Integer.MAX_VALUE); 
-	} 
-
-	// Driver Code 
-	public static void main(String args[]) 
-	{ 
-
-		String s1 = "samer"; 
-		String s2 = "semer"; 
-
-		System.out.println(levenshtein_distance_algorithm(s1, s2)); 
-	} 
+        System.out.println(levenshtein_distance_algorithm(s1, s2));
+    }
 }
-
-
