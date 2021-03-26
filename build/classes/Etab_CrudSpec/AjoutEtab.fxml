@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Etab_CrudSpec.AjoutEtabController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="300.0" spacing="15.0">
+         <children>
+            <HBox prefHeight="450.0" prefWidth="300.0" spacing="50.0">
+               <children>
+                  <VBox prefHeight="3.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lbNomEtabAjout" prefHeight="38.0" prefWidth="88.0" />
+                        <Label prefHeight="38.0" prefWidth="62.0" text="Nom" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfnom" />
+                        <Label text="Discription" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfDisc" prefHeight="129.0" prefWidth="149.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets top="50.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <TableView fx:id="tvSpecAjout" prefHeight="286.0" prefWidth="504.0">
+                     <columns>
+                        <TableColumn fx:id="colNomAjout" prefWidth="75.0" text="Nom" />
+                        <TableColumn fx:id="colDiscAjout" prefWidth="94.0" text="Discription" />
+                        <TableColumn fx:id="colEcoAjout" prefWidth="39.0" text="Eco" />
+                        <TableColumn fx:id="colInfoAjout" prefWidth="45.0" text="Info" />
+                        <TableColumn fx:id="colLetAjout" prefWidth="37.0" text="Let" />
+                        <TableColumn fx:id="colMathAjout" prefWidth="49.0" text="Math" />
+                        <TableColumn fx:id="colScAjout" prefWidth="51.0" text="SC" />
+                        <TableColumn fx:id="colSpAjout" prefWidth="55.0" text="Sport" />
+                        <TableColumn fx:id="colTechAjout" prefWidth="56.0" text="Tech" />
+                     </columns>
+                     <HBox.margin>
+                        <Insets top="50.0" />
+                     </HBox.margin>
+                  </TableView>
+               </children>
+               <VBox.margin>
+                  <Insets left="40.0" />
+               </VBox.margin>
+            </HBox>
+            <Button fx:id="btsuivant" mnemonicParsing="false" onAction="#handleButtonSuivantAjout" prefHeight="25.0" prefWidth="108.0" text="SUIVANT" textFill="#fffefe">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="30.0" left="650.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="90.0" />
+         </padding>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@theme/css/bootstrap2.css" />
+      <URL value="@theme/css/helpers2.css" />
+      <URL value="@theme/css/master2.css" />
+      <URL value="@theme/css/material-color2.css" />
+      <URL value="@theme/css/skeleton2.css" />
+      <URL value="@theme/css/typographic2.css" />
+      <URL value="@theme/css/dark.css" />
+   </stylesheets>
+</StackPane>

@@ -5,6 +5,9 @@
  */
 package Entities;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  *
  * @author iHoussem
@@ -27,19 +30,23 @@ public class Data {
        
         
         double term = f[i].y; 
-        double terms=f[i].y;
-        for (int j = 0; j < n; j++) 
-        { 
-            if (j != i) 
-                terms = terms*(xi - f[j].x) / (f[i].x - f[j].x); 
-        } 
+        
+       
+            
+            result += term;
+            
+        
   
         
-        result += term;
+        
         
     } 
+  result=result/5;
+Double  resultat =BigDecimal.valueOf(result)
+    .setScale(3, RoundingMode.HALF_UP)
+    .doubleValue();
   
-    return (result/5); 
+    return  resultat; 
 } 
    
 }

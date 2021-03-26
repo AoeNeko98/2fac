@@ -11,7 +11,7 @@ package Entities;
  */
 public class Speciality {
     
-int ID_Etab;
+    int ID_Etb;
     String Nom;
     String Discription;
     int ID_SPEC;
@@ -41,14 +41,19 @@ int ID_Etab;
         this.ScoreTECH = ScoreTECH;
     }
 
- 
-    
-    public int getID_Etab() {
-        return ID_Etab;
+    public Speciality(int ID_Etb, int ID_SPEC) {
+        this.ID_Etb = ID_Etb;
+        this.ID_SPEC = ID_SPEC;
     }
 
-    public void setID_Etab(int ID_Etab) {
-        this.ID_Etab = ID_Etab;
+ 
+    
+    public int getID_Etb() {
+        return ID_Etb;
+    }
+
+    public void setID_Etb(int ID_Etab) {
+        this.ID_Etb = ID_Etab;
     }
 
     public String getNom() {
