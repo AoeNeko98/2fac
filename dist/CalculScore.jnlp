@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CalculScore.jar" size="1278733" download="eager" />
+    <jar href="CalculScore.jar" size="1279324" download="eager" />
     <jar href="lib\apache-httpcomponents-httpclient.jar" size="349959" download="eager" />
     <jar href="lib\apache-httpcomponents-httpcore.jar" size="181041" download="eager" />
     <jar href="lib\apache-httpcomponents-httpmime.jar" size="26813" download="eager" />
