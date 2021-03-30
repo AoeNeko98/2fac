@@ -38,7 +38,6 @@ public class GraphicController implements Initializable {
     private Button load;
     @FXML
     private BarChart<String, Integer> BarChart;
-    @FXML
     private Button retour;
 
     /**
@@ -62,15 +61,6 @@ public class GraphicController implements Initializable {
         BarChart.getData().add(series);
     }
 
-    @FXML
-    private void retour(ActionEvent event) {
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-            retour.getScene().setRoot(root);
-        } catch (IOException ex) {
-            //      Logger.getLogger(ClubController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
     
 }
