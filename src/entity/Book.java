@@ -5,33 +5,37 @@
  */
 package entity;
 
-
-
 /**
  *
  * @author Aoe Neko 98
  */
 public class Book {
+
     private int id;
     private String nom;
     private String type;
     private String discreption;
     private float prix;
     private String image;
-    private Category category ;
+    private Category category;
     private User user;
+    private String isbn;
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
     public User getUser() {
         return user;
     }
 
- 
-
     public void setUser(User user) {
         this.user = user;
     }
-    
-    
 
     public Category getCategory() {
         return category;
@@ -40,9 +44,6 @@ public class Book {
     public void setCategory(Category category) {
         this.category = category;
     }
-    
-    
-    
 
     public float getPrix() {
         return prix;
@@ -59,7 +60,6 @@ public class Book {
     public void setImage(String image) {
         this.image = image;
     }
-    
 
     public int getId() {
         return id;
@@ -106,20 +106,19 @@ public class Book {
         this.prix = prix;
         this.image = image;
     }
-    
 
     public Book() {
         category = new Category();
-        user=new User();
+        user = new User();
     }
-    
- @Override
+
+    @Override
     public String toString() {
-        return "nom=" + nom + ", Type=" + type + ", discription=" + discreption + ", prix=" + prix +",image="+image+ '}';
+        return "nom=" + nom + ", Type=" + type + ", discription=" + discreption + ", prix=" + prix + ",image=" + image + '}';
     }
-  
 
+    public Book(String isbn) {
+        this.isbn = isbn;
+    }
 
-    
-    
 }

@@ -35,6 +35,8 @@ public class BookEditDialogController {
     @FXML
     private TextField NameField;
     @FXML
+    private TextField IsbnField;
+    @FXML
     private ComboBox<Category> TypeField;
     @FXML
     private ComboBox<String> types2Field;
@@ -51,6 +53,7 @@ public class BookEditDialogController {
     private File f;
     @FXML
     private ImageView img;
+   
 
     private BookService bs = new BookService();
     CategoryService cs = new CategoryService();
@@ -107,7 +110,7 @@ public class BookEditDialogController {
     private void handleOk() throws Exception {
 
         book.setNom(NameField.getText());
-        book.setCategory(TypeField.getValue());
+        book.setCategory(TypeField.getValue());  
         book.setDiscreption(DiscretionField.getText());
         
         try {
@@ -119,6 +122,7 @@ public class BookEditDialogController {
             book.setImage(PostFile.upload(f.getAbsolutePath()));
         }
         book.setType(types2Field.getValue());
+        book.setIsbn(IsbnField.getText());
         System.out.println("boook : " + book.getId());
         bs.editBook(book);
         okClicked = true;
@@ -144,6 +148,7 @@ public class BookEditDialogController {
         //ImageField.setText(book.getImage());
         PrixField.setText(book.getPrix() + "");
         types2Field.setValue(book.getType());
+        IsbnField.setText(book.getIsbn());
         
 
     }
@@ -165,5 +170,6 @@ public class BookEditDialogController {
             book.setImage(selectedFile.getName());
         }
     }
+    
 
 }

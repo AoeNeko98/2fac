@@ -40,8 +40,8 @@ public class BookService implements ibook {
     @Override
     public void addBook(Book b) {
 
-        String sql = "INSERT INTO `book1` (`nom`, `type`, `description`, `Prix`, `Image`,`categorie`,`user` ) VALUES ( '" + b.getNom() + "', '" + b.getType() + "', '" + b.getDiscreption()
-                + "', '" + b.getPrix() + "', '" + b.getImage() + "','" + b.getCategory().getId() + "','" + '1' + "');";
+        String sql = "INSERT INTO `book1` (`nom`, `type`, `description`, `Prix`, `Image`,`categorie`,`user`,`isbn`  ) VALUES ( '" + b.getNom() + "', '" + b.getType() + "', '" + b.getDiscreption()
+                + "', '" + b.getPrix() + "', '" + b.getImage() + "','" + b.getCategory().getId() + "','" + '1' + "', '" + b.getIsbn() + "');";
         try {
             Statement stl = conn.createStatement();
             stl.executeUpdate(sql);
@@ -57,7 +57,7 @@ public class BookService implements ibook {
     @Override
     public void editBook(Book b) {
         String sql = "UPDATE `book1` SET `nom` = '" + b.getNom() + "', `type` = '" + b.getType() + "', `description` = '" + b.getDiscreption() + "', `Prix` = '" + b.getPrix() + "', `Image` = '" + b.getImage() + "', `categorie` = '" + b.getCategory().getId()
-                + "' WHERE `book1`.`id` = '" + b.getId() + "';";
+                + "', `isbn` = '" + b.getIsbn() + "' WHERE `book1`.`id` = '" + b.getId() + "';";
         try {
             Statement stl = conn.createStatement();
             stl.executeUpdate(sql);
@@ -137,6 +137,7 @@ public class BookService implements ibook {
                 book.setId(rs.getInt("b.id"));
                 book.setPrix(rs.getFloat("b.prix"));
                 book.setImage(rs.getString("b.image"));
+                book.setIsbn(rs.getString("b.isbn"));
 
                 System.out.println(book.toString());
                 ls.add(book);
@@ -183,6 +184,7 @@ public class BookService implements ibook {
                 book.setId(rs.getInt("b.id"));
                 book.setPrix(rs.getFloat("b.prix"));
                 book.setImage(rs.getString("b.image"));
+                book.setIsbn(rs.getString("b.isbn"));
 
                 System.out.println(book.toString());
                 ls.add(book);
@@ -223,6 +225,7 @@ public class BookService implements ibook {
                 book.setPrix(rs.getFloat("b.prix"));
                 book.setImage(rs.getString("b.image"));
                 book.setUser(us);
+                book.setIsbn(rs.getString("b.isbn"));
 
                 System.out.println(book.toString());
                 ls.add(book);
@@ -263,6 +266,7 @@ public class BookService implements ibook {
                 book.setPrix(rs.getFloat("b.prix"));
                 book.setImage(rs.getString("b.image"));
                 book.setUser(us);
+                book.setIsbn(rs.getString("b.isbn"));
 
                 System.out.println(book.toString());
                 ls.add(book);

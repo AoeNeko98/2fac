@@ -8,16 +8,36 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Bib.jar" size="1224629" download="eager" />
-    <jar href="lib\apache-httpcomponents-httpclient.jar" size="349959" download="eager" />
-    <jar href="lib\apache-httpcomponents-httpcore.jar" size="181041" download="eager" />
-    <jar href="lib\apache-httpcomponents-httpmime.jar" size="26813" download="eager" />
+    <jar href="Bib.jar" size="1223786" download="eager" />
     <jar href="lib\com.mysql.jdbc_5.1.5.jar" size="676712" download="eager" />
-    <jar href="lib\common-logging-2.0.2-ga.jar" size="11221" download="eager" />
-    <jar href="lib\commons-io-1.4.jar" size="275220" download="eager" />
+    <jar href="lib\commons-codec-1.11.jar" size="335042" download="eager" />
+    <jar href="lib\commons-io-2.8.0.jar" size="285424" download="eager" />
+    <jar href="lib\commons-lang3-3.12.0.jar" size="587402" download="eager" />
     <jar href="lib\commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib\commons-net-3.8.0.jar" size="307305" download="eager" />
+    <jar href="lib\commons-text-1.9.jar" size="216211" download="eager" />
+    <jar href="lib\dec-0.1.2.jar" size="98115" download="eager" />
+    <jar href="lib\htmlunit-2.48.0.jar" size="2080992" download="eager" />
+    <jar href="lib\htmlunit-core-js-2.48.0.jar" size="1254135" download="eager" />
+    <jar href="lib\htmlunit-cssparser-1.7.0.jar" size="207300" download="eager" />
+    <jar href="lib\httpclient-4.5.13.jar" size="780321" download="eager" />
+    <jar href="lib\httpcore-4.4.13.jar" size="328593" download="eager" />
+    <jar href="lib\httpmime-4.5.13.jar" size="41790" download="eager" />
+    <jar href="lib\jetty-client-9.4.38.v20210224.jar" size="322789" download="eager" />
+    <jar href="lib\jetty-http-9.4.38.v20210224.jar" size="221941" download="eager" />
+    <jar href="lib\jetty-io-9.4.38.v20210224.jar" size="170266" download="eager" />
+    <jar href="lib\jetty-util-9.4.38.v20210224.jar" size="571208" download="eager" />
     <jar href="lib\jfoenix-8.0.1.jar" size="2405715" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib\neko-htmlunit-2.48.0.jar" size="376369" download="eager" />
+    <jar href="lib\salvation2-3.0.0.jar" size="65728" download="eager" />
+    <jar href="lib\serializer-2.7.2.jar" size="276420" download="eager" />
+    <jar href="lib\websocket-api-9.4.38.v20210224.jar" size="52176" download="eager" />
+    <jar href="lib\websocket-client-9.4.38.v20210224.jar" size="45504" download="eager" />
+    <jar href="lib\websocket-common-9.4.38.v20210224.jar" size="214120" download="eager" />
+    <jar href="lib\xalan-2.7.2.jar" size="3154938" download="eager" />
+    <jar href="lib\xercesImpl-2.12.0.jar" size="1386397" download="eager" />
+    <jar href="lib\xml-apis-1.4.01.jar" size="220536" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Bib" >
     <param name="requiredFXVersion" value="8.0+"/>

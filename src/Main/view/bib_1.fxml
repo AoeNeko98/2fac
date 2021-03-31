@@ -14,6 +14,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -23,6 +24,11 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.view.BookController">
    <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ListView fx:id="simi1" editable="true" fixedCellSize="1.0" layoutX="363.0" layoutY="586.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="422.0" />
+         </children>
+      </AnchorPane>
       <TabPane prefHeight="134.0" prefWidth="1584.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Bibliothque ">
@@ -82,6 +88,8 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
                                                 <Label styleClass="h5" text="Nom du livre" />
@@ -92,10 +100,14 @@
                                                 </Label>
                                                 <Label styleClass="h5" text="Discreption" GridPane.rowIndex="2" />
                                                 <Label styleClass="h5" text="Prix" GridPane.rowIndex="3" />
-                                                <Label fx:id="nameLbl1" text="Label" textFill="WHITE" GridPane.columnIndex="1" />
-                                                <Label fx:id="typeLbl1" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label fx:id="descriptionLbl1" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label fx:id="prixLabel1" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="nameLbl1" text="Label" GridPane.columnIndex="1" />
+                                                <Label fx:id="typeLbl1" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="descriptionLbl1" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="prixLabel1" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label styleClass="h5" text="ISBN" GridPane.rowIndex="4" />
+                                                <Label fx:id="isbnlbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label styleClass="h5" text="Rate" GridPane.rowIndex="5" />
+                                                <Label fx:id="note" text="Label" textFill="#030000" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                              </children>
                                           </GridPane>
                                        </children>
@@ -105,15 +117,6 @@
                                           <ImageView fx:id="imgView1" fitHeight="210.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true" translateX="100.0" />
                                        </children>
                                     </HBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="338.0" prefWidth="1624.0" translateY="50.0">
-                           <children>
-                              <HBox prefHeight="277.0" prefWidth="1600.0">
-                                 <children>
-                                    <ListView fx:id="simi1" editable="true" fixedCellSize="1.0" prefHeight="201.0" prefWidth="433.0" translateX="400.0" />
                                  </children>
                               </HBox>
                            </children>
@@ -188,6 +191,7 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
                                                 <Label styleClass="h5" text="Nom du livre" />
@@ -198,10 +202,12 @@
                                                 </Label>
                                                 <Label styleClass="h5" text="Discreption" GridPane.rowIndex="2" />
                                                 <Label styleClass="h5" text="Prix" GridPane.rowIndex="3" />
-                                                <Label fx:id="nameLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1" />
-                                                <Label fx:id="typeLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label fx:id="descriptionLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label fx:id="prixLabel" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="nameLbl" text="Label" GridPane.columnIndex="1" />
+                                                <Label fx:id="typeLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="descriptionLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="prixLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label styleClass="h5" text="ISBN" GridPane.rowIndex="4" />
+                                                <Label fx:id="isbnlbl1" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                              </children>
                                           </GridPane>
                                        </children>

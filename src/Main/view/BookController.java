@@ -11,27 +11,17 @@ import entity.Category;
 import entity.User;
 
 import java.io.IOException;
-import java.net.URL;
-import static java.sql.JDBCType.NULL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.SortedMap;
-import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -43,19 +33,15 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import static jdk.nashorn.internal.objects.NativeRegExp.source;
 import service.BookService;
 import service.CategoryService;
 import service.UserService;
+import Util.WebScraper;
 
 /**
  * FXML Controller class
@@ -77,6 +63,10 @@ public class BookController {
     private ListView simi;
 
     @FXML
+    private Label isbnlbl;
+    @FXML
+    private Label isbnlbl1;
+    @FXML
     private Label nameLbl;
     @FXML
     private Label typeLbl;
@@ -92,6 +82,8 @@ public class BookController {
     private ComboBox<Category> bookType;
     @FXML
     private Slider price;
+    @FXML
+    private Label note;
 
     @FXML
     private ComboBox<String> bookTypes;
@@ -106,7 +98,7 @@ public class BookController {
     private TableColumn<Book, String> bookUserColumn1;
 
     @FXML
-    private ListView simi1;
+    private ListView<String> simi1;
 
     @FXML
     private Label nameLbl1;
@@ -144,7 +136,9 @@ public class BookController {
     BookService bs = new BookService();
     CategoryService cs = new CategoryService();
     UserService us = new UserService();
+    WebScraper ws = new WebScraper();
     Book b;
+    Book d = new Book("9780141349978");
 
     public void initialize() {
         System.out.println("=========================================================");
@@ -180,15 +174,13 @@ public class BookController {
         bookNameColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
         bookTypeColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getNom() + ""));
         bookUserColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getNom() + ""));
-        // ListeView.setCellFactory((ListView<ProduitHerbo> param) -> new ListViewPHerboItemCell());
+
         showBookDetails(null);
         bookTable1.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showBookDetails(newValue));
         bookTable1.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> handleSim(newValue));
         price1.setMax(bs.maxPrice());
-        String c = "lapin";
-        System.out.println(bs.similaire(c));
 
         List<Book> ls1 = bs.showMyBooks();
 
@@ -222,6 +214,8 @@ public class BookController {
                 (observable, oldValue, newValue) -> showMyBookDetails(newValue));
         bookTable1.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> handleSim(newValue));
+//        bookTable1.getSelectionModel().selectedItemProperty().addListener(
+//                (observable, oldValue, newValue) -> viewNote(newValue));
         price.setMax(bs.maxPrice());
 
     }
@@ -232,13 +226,17 @@ public class BookController {
             descriptionLbl1.setText(p.getDiscreption());
             typeLbl1.setText(p.getType());
             prixLabel1.setText(p.getPrix() + "");
+            isbnlbl.setText(p.getIsbn());
             Image image = new Image("http://localhost/appJava/" + p.getImage());
             imgView1.setImage(image);
+            viewNote(p);
         } else {
             nameLbl1.setText("");
             descriptionLbl1.setText("");
             typeLbl1.setText("");
             prixLabel1.setText("");
+            isbnlbl.setText("");
+            note.setText("");
             //imgLabel.setText("");
         }
 
@@ -250,6 +248,7 @@ public class BookController {
             nameLbl.setText(p.getNom());
             descriptionLbl.setText(p.getDiscreption());
             typeLbl.setText(p.getType());
+            isbnlbl1.setText(p.getIsbn());
             prixLabel.setText(p.getPrix() + "");
             Image image = new Image("http://localhost/appJava/" + p.getImage());
             imgView.setImage(image);
@@ -258,6 +257,7 @@ public class BookController {
             descriptionLbl.setText("");
             typeLbl.setText("");
             prixLabel.setText("");
+            isbnlbl1.setText("");
             //imgLabel.setText("");
         }
 
@@ -282,8 +282,8 @@ public class BookController {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 //alert.initOwner(mainApp.getPrimaryStage());
                 alert.setTitle("No Selection");
-                alert.setHeaderText("No Service Selected");
-                alert.setContentText("Please select a Service in the table.");
+                alert.setHeaderText("No Book Selected");
+                alert.setContentText("Please select a Book in the table.");
                 alert.showAndWait();
             }
         }
@@ -317,7 +317,7 @@ public class BookController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             ////alert.initOwner(Main.getPrimaryStage());
             alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
+            alert.setHeaderText("No Book Selected");
             alert.setContentText("Please select a book in the table.");
 
             alert.showAndWait();
@@ -454,8 +454,7 @@ public class BookController {
         ArrayList<String> list = new ArrayList<>();
         Map<String, Integer> s = bs.similaire(t.getNom());
         String key;
-        for (Iterator<Map.Entry<String, Integer>> entries = s.entrySet().iterator(); entries.hasNext();) {
-            Map.Entry<String, Integer> entry = entries.next();
+        for (Map.Entry<String, Integer> entry : s.entrySet()) {
             key = entry.getKey();
             value = entry.getValue();
 
@@ -467,7 +466,6 @@ public class BookController {
         for (i = 0; i <= 2 && i < list.size(); i++) {
 
             simi1.getItems().add(list.get(i));
-
         }
 
     }
@@ -518,6 +516,26 @@ public class BookController {
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+
+    }
+
+    public void viewNote(Book p)  {
+
+        if (p != null) {
+            ws.webScrapper(p, note);
+
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            ////alert.initOwner(Main.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Book Selected");
+            alert.setContentText("Please select a book in the table.");
+            note.setText("");
+
+            alert.showAndWait();
+
         }
 
     }
