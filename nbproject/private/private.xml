@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/iHoussem/Documents/GitHub/2fac/src/Main/view/BookController.java</file>
             <file>file:/C:/Users/iHoussem/Documents/GitHub/2fac/src/Etab_CrudSpec/AjoutEtab.fxml</file>
             <file>file:/C:/Users/iHoussem/Documents/GitHub/2fac/src/pkg2fac_houssemriahi/Main.fxml</file>
@@ -17,6 +18,16 @@
             <file>file:/C:/Users/iHoussem/Documents/GitHub/2fac/src/entity/Book.java</file>
             <file>file:/C:/Users/iHoussem/Documents/GitHub/2fac/src/Main/view/BookEditDialogController.java</file>
             <file>file:/C:/Users/iHoussem/Documents/GitHub/2fac/src/piamine/PIAmine.java</file>
+=======
+            <file>file:/C:/Users/samer/Desktop/Bib/src/service/BookService.java</file>
+            <file>file:/C:/Users/samer/Desktop/Bib/src/Main/view/BookEditDialogController.java</file>
+            <file>file:/C:/Users/samer/Desktop/Bib/src/Main/Main.java</file>
+            <file>file:/C:/Users/samer/Desktop/Bib/src/Util/PostFile.java</file>
+            <file>file:/C:/Users/samer/Desktop/Bib/src/Util/Levenshtein_distance_algorithm.java</file>
+            <file>file:/C:/Users/samer/Desktop/Bib/src/Main/view/BookController.java</file>
+            <file>file:/C:/Users/samer/Desktop/Bib/src/Util/WebScraper.java</file>
+            <file>file:/C:/Users/samer/Desktop/Bib/src/entity/Book.java</file>
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         </group>
     </open-files>
 </project-private>

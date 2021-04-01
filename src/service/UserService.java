@@ -44,7 +44,11 @@ public class UserService implements IUser{
                 
                  user.setNom(rs.getString("nom"));
                 
+<<<<<<< HEAD
                  user.setId(rs.getInt("id_User"));
+=======
+                 user.setId(rs.getInt("id"));
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
                  ls.add(user);
             }
         } catch (SQLException ex) {

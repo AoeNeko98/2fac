@@ -42,12 +42,15 @@ import service.BookService;
 import service.CategoryService;
 import service.UserService;
 import Util.WebScraper;
+<<<<<<< HEAD
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import piamine.AcceuilController;
 import static piamine.AcceuilEleveController.id_user;
+=======
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
 
 /**
  * FXML Controller class
@@ -65,6 +68,11 @@ public class BookController {
     @FXML
     private TableColumn<Book, String> bookUserColumn;
 
+<<<<<<< HEAD
+=======
+    @FXML
+    private ListView simi;
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
 
     @FXML
     private Label isbnlbl;
@@ -120,6 +128,10 @@ public class BookController {
     private ComboBox<Category> bookType1;
     @FXML
     private Slider price1;
+<<<<<<< HEAD
+=======
+    @FXML
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
     private Button lightBtn;
     @FXML
     private Button darkBtn;
@@ -146,12 +158,19 @@ public class BookController {
     public void initialize() {
         System.out.println("=========================================================");
         // TODO
+<<<<<<< HEAD
         
         List<Book> ls = bs.showAllBooks();
         ArrayList<Category> lsc = cs.getAllCategories();
         ArrayList<User> luc = us.getAllUsers();
         ArrayList<Category> lsc1 = cs.getAllCategories();
         ArrayList<User> luc1 = us.getAllUsers();
+=======
+
+        List<Book> ls = bs.showAllBooks();
+        ArrayList<Category> lsc = cs.getAllCategories();
+        ArrayList<User> luc = us.getAllUsers();
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         data = FXCollections.observableArrayList();
         types = FXCollections.observableArrayList();
         user = FXCollections.observableArrayList();
@@ -179,7 +198,11 @@ public class BookController {
         bookNameColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
         bookTypeColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getNom() + ""));
         bookUserColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getNom() + ""));
+<<<<<<< HEAD
         handleReset();
+=======
+
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         showBookDetails(null);
         bookTable1.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showBookDetails(newValue));
@@ -187,11 +210,16 @@ public class BookController {
                 (observable, oldValue, newValue) -> handleSim(newValue));
         price1.setMax(bs.maxPrice());
 
+<<<<<<< HEAD
         List<Book> ls1 = bs.showMyBooks(id);
+=======
+        List<Book> ls1 = bs.showMyBooks();
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
 
         data1 = FXCollections.observableArrayList();
         types1 = FXCollections.observableArrayList();
         user1 = FXCollections.observableArrayList();
+<<<<<<< HEAD
         ls1.stream().forEach((j) -> {
             data1.add(j);
         });
@@ -200,6 +228,15 @@ public class BookController {
         });
         
         luc1.stream().forEach((j) -> {
+=======
+        lsc.stream().forEach((j) -> {
+            types1.add(j);
+        });
+        ls1.stream().forEach((j) -> {
+            data1.add(j);
+        });
+        luc.stream().forEach((j) -> {
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
             user1.add(j);
         });
 
@@ -208,8 +245,12 @@ public class BookController {
         bookTypes.setItems(types2);
 
         bookTable.setItems(data1);
+<<<<<<< HEAD
         System.out.println(data1);
         bookNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()+""));
+=======
+        bookNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         bookTypeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getNom() + ""));
         bookUserColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getNom() + ""));
         // ListeView.setCellFactory((ListView<ProduitHerbo> param) -> new ListViewPHerboItemCell());
@@ -234,7 +275,11 @@ public class BookController {
             typeLbl1.setText(p.getType());
             prixLabel1.setText(p.getPrix() + "");
             isbnlbl.setText(p.getIsbn());
+<<<<<<< HEAD
             Image image = new Image("http://localhost:7882/appJava/" + p.getImage());
+=======
+            Image image = new Image("http://localhost/appJava/" + p.getImage());
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
             imgView1.setImage(image);
             viewNote(p);
         } else {
@@ -257,7 +302,11 @@ public class BookController {
             typeLbl.setText(p.getType());
             isbnlbl1.setText(p.getIsbn());
             prixLabel.setText(p.getPrix() + "");
+<<<<<<< HEAD
             Image image = new Image("http://localhost:7882/appJava/" + p.getImage());
+=======
+            Image image = new Image("http://localhost/appJava/" + p.getImage());
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
             imgView.setImage(image);
         } else {
             nameLbl.setText("");
@@ -331,20 +380,27 @@ public class BookController {
 
         }
     }
+<<<<<<< HEAD
  public static int id;
     public void setid(int y){
         id=y;
     }
+=======
+
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
     public boolean showBookEditDialog(Book book) {
         try {
             if (sta == "Dark") {
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(Main.class.getResource("view/BookEditDialog.fxml"));
+<<<<<<< HEAD
                  BookEditDialogController cc = loader2.getController();
                  System.out.println(id);
                
                  
                 
+=======
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
                 // Create the dialog Stage.
                 Stage dialogStage = new Stage();
                 StackPane page = (StackPane) loader2.load();
@@ -363,9 +419,12 @@ public class BookController {
             } else {
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(Main.class.getResource("view/BookEditDialog_1.fxml"));
+<<<<<<< HEAD
                 BookEditDialogController cc = loader2.getController();
                  System.out.println(id);
                
+=======
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
                 // Create the dialog Stage.
                 Stage dialogStage = new Stage();
                 StackPane page = (StackPane) loader2.load();
@@ -384,10 +443,16 @@ public class BookController {
 
             }
         } catch (IOException e) {
+<<<<<<< HEAD
             System.out.println(e);
         return false;   
         }
         
+=======
+            System.err.println(e.toString());
+            return false;
+        }
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
     }
 
     @FXML
@@ -514,6 +579,10 @@ public class BookController {
 
     }
 
+<<<<<<< HEAD
+=======
+    @FXML
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
     private void handleLight() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -558,6 +627,7 @@ public class BookController {
 
     }
 
+<<<<<<< HEAD
     @FXML
     private void Retour(ActionEvent event) throws IOException, SQLException {
          FXMLLoader loader=new FXMLLoader(getClass().getResource("/piamine/acceuil.fxml"));
@@ -570,4 +640,6 @@ public class BookController {
                 window.show();
     }
 
+=======
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
 }

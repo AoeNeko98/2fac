@@ -6,7 +6,10 @@
 package service;
 
 import Main.MyDB;
+<<<<<<< HEAD
 import static Main.view.BookController.id;
+=======
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
 import Util.Levenshtein_distance_algorithm;
 import static Util.Levenshtein_distance_algorithm.levenshtein_distance_algorithm;
 import entity.Book;
@@ -18,7 +21,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+<<<<<<< HEAD
 import java.time.Year;
+=======
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,7 +49,11 @@ public class BookService implements ibook {
     public void addBook(Book b) {
 
         String sql = "INSERT INTO `book1` (`nom`, `type`, `description`, `Prix`, `Image`,`categorie`,`user`,`isbn`  ) VALUES ( '" + b.getNom() + "', '" + b.getType() + "', '" + b.getDiscreption()
+<<<<<<< HEAD
                 + "', '" + b.getPrix() + "', '" + b.getImage() + "','" + b.getCategory().getId() + "','" + id + "', '" + b.getIsbn() + "');";
+=======
+                + "', '" + b.getPrix() + "', '" + b.getImage() + "','" + b.getCategory().getId() + "','" + '1' + "', '" + b.getIsbn() + "');";
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         try {
             Statement stl = conn.createStatement();
             stl.executeUpdate(sql);
@@ -59,7 +69,11 @@ public class BookService implements ibook {
     @Override
     public void editBook(Book b) {
         String sql = "UPDATE `book1` SET `nom` = '" + b.getNom() + "', `type` = '" + b.getType() + "', `description` = '" + b.getDiscreption() + "', `Prix` = '" + b.getPrix() + "', `Image` = '" + b.getImage() + "', `categorie` = '" + b.getCategory().getId()
+<<<<<<< HEAD
                 + "', `isbn` = '" + b.getIsbn() + "' WHERE `book1`.`id` = " + b.getId() + " ;";
+=======
+                + "', `isbn` = '" + b.getIsbn() + "' WHERE `book1`.`id` = '" + b.getId() + "';";
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         try {
             Statement stl = conn.createStatement();
             stl.executeUpdate(sql);
@@ -114,9 +128,15 @@ public class BookService implements ibook {
         String sql;
         if (cate != null) {
 
+<<<<<<< HEAD
             sql = "SELECT * FROM book1 b inner join user u on b.user= u.id_User  inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%' && c.nom like '%" + cate + "%' && b.type like '%" + t + "%' && b.prix >='" + p + "' && b.user="+id+" ;";
         } else {
             sql = "SELECT * FROM book1 b inner join user u on b.user= u.id_User inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%'&& b.type like '%" + t + "%' && b.prix >= '" + p + "' && b.user ="+id+";";
+=======
+            sql = "SELECT * FROM book1 b inner join user u on b.user= u.id  inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%' && c.nom like '%" + cate + "%' && b.type like '%" + t + "%' && b.prix >='" + p + "';";
+        } else {
+            sql = "SELECT * FROM book1 b inner join user u on b.user= u.id inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%'&& b.type like '%" + t + "%' && b.prix >= '" + p + "' ;";
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         }
 
         try {
@@ -129,7 +149,11 @@ public class BookService implements ibook {
                 cat.setId(rs.getInt("c.id"));
                 cat.setDescription(rs.getString("c.description"));
                 cat.setNom(rs.getString("c.nom"));
+<<<<<<< HEAD
                 us.setId(rs.getInt("u.id_User"));
+=======
+                us.setId(rs.getInt("u.id"));
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
                 us.setNom(rs.getString("u.nom"));
                 book.setCategory(cat);
                 book.setUser(us);
@@ -152,7 +176,11 @@ public class BookService implements ibook {
         return ls;
 
     }
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
     public List<Book> searchMyBookByName(String name, Category cate, String t, float p) {
 
         List<Book> ls = new ArrayList<>();
@@ -161,9 +189,15 @@ public class BookService implements ibook {
         String sql;
         if (cate != null) {
 
+<<<<<<< HEAD
             sql = "SELECT * FROM book1 b inner join user u on b.user= u.id_User  inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%' && c.nom like '%" + cate + "%' && b.type like '%" + t + "%' && b.prix >='" + p + "' && b.user="+ id +";";
         } else {
             sql = "SELECT * FROM book1 b inner join user u on b.user= u.id_User inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%'&& b.type like '%" + t + "%' && b.prix >= '" + p + "' && b.user="+ id +";";
+=======
+            sql = "SELECT * FROM book1 b inner join user u on b.user= u.id  inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%' && c.nom like '%" + cate + "%' && b.type like '%" + t + "%' && b.prix >='" + p + "' && b.user=1 ;";
+        } else {
+            sql = "SELECT * FROM book1 b inner join user u on b.user= u.id inner join categorie c on b.categorie = c.id where b.nom Like '%" + name + "%'&& b.type like '%" + t + "%' && b.prix >= '" + p + "' && b.user=1 ;";
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         }
 
         try {
@@ -176,7 +210,11 @@ public class BookService implements ibook {
                 cat.setId(rs.getInt("c.id"));
                 cat.setDescription(rs.getString("c.description"));
                 cat.setNom(rs.getString("c.nom"));
+<<<<<<< HEAD
                 us.setId(rs.getInt("u.id_User"));
+=======
+                us.setId(rs.getInt("u.id"));
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
                 us.setNom(rs.getString("u.nom"));
                 book.setCategory(cat);
                 book.setUser(us);
@@ -204,7 +242,11 @@ public class BookService implements ibook {
         List<Book> ls = new ArrayList<>();
         ResultSet rs;
         Book book;
+<<<<<<< HEAD
         String sql = "SELECT * FROM book1 b inner join categorie c on b.categorie = c.id inner join user u on b.user = u.id_User  ;";
+=======
+        String sql = "SELECT * FROM book1 b inner join categorie c on b.categorie = c.id inner join user u on b.user = u.id  ;";
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         try {
             Statement stl = conn.createStatement();
             rs = stl.executeQuery(sql);
@@ -213,7 +255,11 @@ public class BookService implements ibook {
                 Category cat = new Category();
                 User us = new User();
 
+<<<<<<< HEAD
                 us.setId(rs.getInt("u.id_User"));
+=======
+                us.setId(rs.getInt("u.id"));
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
                 us.setNom(rs.getString("u.nom"));
                 cat.setId(rs.getInt("c.id"));
                 cat.setDescription(rs.getString("c.description"));
@@ -240,12 +286,21 @@ public class BookService implements ibook {
         return ls;
 
     }
+<<<<<<< HEAD
     
     public List<Book> showMyBooks(int y) {
         List<Book> ls = new ArrayList<>();
         ResultSet rs;
         Book book;
         String sql = "SELECT * FROM book1 b inner join categorie c on b.categorie = c.id inner join user u on b.user = u.id_User WHERE b.user = "+y+" ;";
+=======
+
+    public List<Book> showMyBooks() {
+        List<Book> ls = new ArrayList<>();
+        ResultSet rs;
+        Book book;
+        String sql = "SELECT * FROM book1 b inner join categorie c on b.categorie = c.id inner join user u on b.user = u.id WHERE b.user = 1 ;";
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         try {
             Statement stl = conn.createStatement();
             rs = stl.executeQuery(sql);
@@ -254,7 +309,11 @@ public class BookService implements ibook {
                 Category cat = new Category();
                 User us = new User();
 
+<<<<<<< HEAD
                 us.setId(rs.getInt("u.id_User"));
+=======
+                us.setId(rs.getInt("u.id"));
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
                 us.setNom(rs.getString("u.nom"));
                 cat.setId(rs.getInt("c.id"));
                 cat.setDescription(rs.getString("c.description"));

@@ -13,7 +13,11 @@
             </extension>
         </buildExtensions>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
+<<<<<<< HEAD
             <name>CalculScore</name>
+=======
+            <name>Bib</name>
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>

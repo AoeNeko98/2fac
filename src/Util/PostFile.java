@@ -27,7 +27,11 @@ public class PostFile {
        // String userHome=System.getProperty("user.home");
         HttpClient httpclient = new DefaultHttpClient();
         httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+<<<<<<< HEAD
         HttpPost httppost = new HttpPost("http://localhost:7882/appJava/upload.php");
+=======
+        HttpPost httppost = new HttpPost("http://localhost/appJava/upload.php");
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         File file = new File(path);
         MultipartEntity mpEntity = new MultipartEntity();
         ContentBody contentFile = new FileBody(file);

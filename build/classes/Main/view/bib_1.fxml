@@ -22,7 +22,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<<<<<<< HEAD
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.view.BookController">
+=======
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.view.BookController">
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -37,10 +41,14 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
+<<<<<<< HEAD
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#Retour" prefWidth="81.0" style="-fx-background-color: -indigo;" text="Retour" />
                                  </children></HBox>
+=======
+                              <HBox prefHeight="100.0" prefWidth="200.0" />
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <VBox prefHeight="100.0" prefWidth="938.0" translateX="10.0">
@@ -233,6 +241,7 @@
       <Button fx:id="darkBtn" mnemonicParsing="false" onAction="#handleDark" text="Dark theme" translateX="700.0" translateY="-430.0" />
    </children>
    <stylesheets>
+<<<<<<< HEAD
       <URL value="@../../Forum/theme/css/bootstrap2.css" />
       <URL value="@../../Forum/theme/css/helpers2.css" />
       <URL value="@../../Forum/theme/css/master2.css" />
@@ -241,5 +250,15 @@
       <URL value="@../../Forum/theme/css/skeleton2.css" />
       <URL value="@../../Forum/theme/css/typographic2.css" />
       <URL value="@../../Forum/theme/css/light.css" />
+=======
+      <URL value="@Bib/theme/css/light.css" />
+      <URL value="@Bib/theme/css/bootstrap2.css" />
+      <URL value="@Bib/theme/css/helpers2.css" />
+      <URL value="@Bib/theme/css/master2.css" />
+      <URL value="@Bib/theme/css/material-color2.css" />
+      <URL value="@Bib/theme/css/skeleton2.css" />
+      <URL value="@Bib/theme/css/typographic2.css" />
+      <URL value="@Bib/theme/css/shape2.css" />
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
    </stylesheets>
 </StackPane>

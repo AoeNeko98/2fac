@@ -5,7 +5,10 @@
  */
 package Main.view;
 
+<<<<<<< HEAD
 import static Main.view.BookController.id;
+=======
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
 import Util.PostFile;
 import entity.Book;
 import entity.Category;
@@ -45,6 +48,11 @@ public class BookEditDialogController {
     private TextField DiscretionField;
     @FXML
     private TextField PrixField;
+<<<<<<< HEAD
+=======
+    @FXML
+    private TextField ImageField;
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
 
     private Stage dialogStage;
     private Book book;
@@ -111,7 +119,10 @@ public class BookEditDialogController {
         book.setNom(NameField.getText());
         book.setCategory(TypeField.getValue());  
         book.setDiscreption(DiscretionField.getText());
+<<<<<<< HEAD
        
+=======
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         
         try {
             book.setPrix(Float.parseFloat(PrixField.getText()));
@@ -130,7 +141,11 @@ public class BookEditDialogController {
         dialogStage.close();
 
     }
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
     /**
      * Called when the user clicks cancel.
      */
@@ -153,7 +168,10 @@ public class BookEditDialogController {
 
     }
 
+<<<<<<< HEAD
     @FXML
+=======
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
     public void uploadPhoto() throws MalformedURLException, Exception {
         FileChooser.ExtensionFilter imageFilter
                 = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png");

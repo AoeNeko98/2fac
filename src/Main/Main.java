@@ -33,7 +33,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
+<<<<<<< HEAD
         Parent root = FXMLLoader.load(getClass().getResource("../piamine/Login.fxml"));
+=======
+        Parent root = FXMLLoader.load(getClass().getResource("view/bib_1.fxml"));
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
 
         Scene scene = new Scene(root);
         primaryStage.setTitle("Light");
@@ -41,7 +45,11 @@ public class Main extends Application {
         primaryStage.show();
 
         //this.primaryStage.setTitle("AddressApp");
+<<<<<<< HEAD
         
+=======
+        primaryStage.setMaximized(true);
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
         //  initRootLayout();
     }
 

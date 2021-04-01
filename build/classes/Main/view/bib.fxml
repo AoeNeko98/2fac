@@ -23,6 +23,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.view.BookController">
    <stylesheets>
+<<<<<<< HEAD
       <URL value="@../../Forum/theme/css/bootstrap.css" />
       <URL value="@../../Forum/theme/css/helpers.css" />
       <URL value="@../../Forum/theme/css/master.css" />
@@ -31,6 +32,16 @@
       <URL value="@../../Forum/theme/css/skeleton.css" />
       <URL value="@../../Forum/theme/css/typographic.css" />
       <URL value="@../../Forum/theme/css/dark.css" />
+=======
+      <URL value="@Bib/theme/css/master.css" />
+      <URL value="@Bib/theme/css/material-color.css" />
+      <URL value="@Bib/theme/css/skeleton.css" />
+      <URL value="@Bib/theme/css/bootstrap.css" />
+      <URL value="@Bib/theme/css/shape.css" />
+      <URL value="@Bib/theme/css/typographic.css" />
+      <URL value="@Bib/theme/css/helpers.css" />
+      <URL value="@Bib/theme/css/dark.css" />
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
    </stylesheets>
    <children>
       <TabPane prefHeight="134.0" prefWidth="1584.0" tabClosingPolicy="UNAVAILABLE">

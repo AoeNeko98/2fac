@@ -76,6 +76,7 @@
       </VBox>
    </children>
    <stylesheets>
+<<<<<<< HEAD
       <URL value="@../../Forum/theme/css/bootstrap2.css" />
       <URL value="@../../Forum/theme/css/helpers2.css" />
       <URL value="@../../Forum/theme/css/master2.css" />
@@ -84,5 +85,15 @@
       <URL value="@../../Forum/theme/css/skeleton2.css" />
       <URL value="@../../Forum/theme/css/typographic2.css" />
       <URL value="@../../Forum/theme/css/light.css" />
+=======
+      <URL value="@Bib/theme/css/bootstrap2.css" />
+      <URL value="@Bib/theme/css/material-color2.css" />
+      <URL value="@Bib/theme/css/helpers2.css" />
+      <URL value="@Bib/theme/css/typographic2.css" />
+      <URL value="@Bib/theme/css/master2.css" />
+      <URL value="@Bib/theme/css/shape2.css" />
+      <URL value="@Bib/theme/css/skeleton2.css" />
+      <URL value="@Bib/theme/css/light.css" />
+>>>>>>> bbe37c878253ac63f653aff063c98b5a402e9028
    </stylesheets>
 </StackPane>
