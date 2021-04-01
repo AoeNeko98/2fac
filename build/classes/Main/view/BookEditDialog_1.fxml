@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.view.BookEditDialogController">
+   <children>
+      <VBox prefHeight="314.0" prefWidth="800.0">
+         <children>
+            <HBox prefHeight="310.0" prefWidth="790.0">
+               <children>
+                  <GridPane prefHeight="225.0" prefWidth="660.0" translateX="30.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="289.4000244140625" minWidth="10.0" prefWidth="131.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="464.5999755859375" minWidth="10.0" prefWidth="459.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Nom du livre" />
+                        <Label text="Decription" GridPane.rowIndex="3" />
+                        <Label text="Catégorie du livre" GridPane.rowIndex="1" />
+                        <TextField fx:id="NameField" GridPane.columnIndex="1" />
+                        <TextField fx:id="DiscretionField" prefHeight="54.0" prefWidth="465.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <ComboBox fx:id="TypeField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Prix" GridPane.rowIndex="4" />
+                        <Label text="Images" GridPane.rowIndex="6" />
+                        <TextField fx:id="PrixField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#uploadPhoto" text="Upload" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label text="Type de livre" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="types2Field" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="ISBN" GridPane.rowIndex="5" />
+                        <TextField fx:id="IsbnField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="98.0" prefWidth="800.0">
+               <children>
+                  <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="400.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="66.0" prefWidth="800.0">
+               <children>
+                  <ButtonBar prefHeight="351.0" prefWidth="800.0">
+                     <buttons>
+                        <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+                        <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
+                     </buttons>
+                  </ButtonBar>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../../Forum/theme/css/bootstrap2.css" />
+      <URL value="@../../Forum/theme/css/helpers2.css" />
+      <URL value="@../../Forum/theme/css/master2.css" />
+      <URL value="@../../Forum/theme/css/material-color2.css" />
+      <URL value="@../../Forum/theme/css/shape2.css" />
+      <URL value="@../../Forum/theme/css/skeleton2.css" />
+      <URL value="@../../Forum/theme/css/typographic2.css" />
+      <URL value="@../../Forum/theme/css/light.css" />
+   </stylesheets>
+</StackPane>

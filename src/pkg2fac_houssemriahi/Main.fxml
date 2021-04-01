@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pkg2fac_houssemriahi.MainController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <AnchorPane fx:id="User" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <AnchorPane fx:id="consulterAnchor" layoutY="80.0" prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #3f51b5;">
+                     <children>
+                        <TableView fx:id="tableview" layoutX="67.0" layoutY="154.0" onMouseClicked="#handleButtonAction2" prefHeight="309.0" prefWidth="495.0">
+                           <columns>
+                              <TableColumn fx:id="colEtab" prefWidth="85.0" text="Etablissement" />
+                              <TableColumn fx:id="colName" prefWidth="81.0" text=" Name" />
+                              <TableColumn fx:id="colDiscrip" prefWidth="210.0" text="discription" />
+                              <TableColumn fx:id="colScore" prefWidth="117.0" text="score" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="filterField" layoutX="150.0" layoutY="108.0" prefHeight="25.0" prefWidth="348.0" style="-fx-background-color: #5d9cec;" text="Rechercher.." />
+                        <Label layoutX="67.0" layoutY="109.0" text="Search Box" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="511.0" layoutY="47.0" text="Votre Score:" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbscore" layoutX="615.0" layoutY="45.0" prefHeight="31.0" prefWidth="84.0" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbtype" layoutY="50.0" prefHeight="46.0" prefWidth="84.0" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btMap" layoutX="590.0" layoutY="231.0" mnemonicParsing="false" onAction="#showmap" text="show on map" />
+                        <Button fx:id="btRecherche" layoutX="590.0" layoutY="322.0" mnemonicParsing="false" onAction="#rechercher" text="Rechercher" />
+                        <Label fx:id="lbEtab" layoutX="594.0" layoutY="170.0" prefHeight="46.0" prefWidth="117.0" textFill="WHITE">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbSpec" layoutX="594.0" layoutY="269.0" prefHeight="46.0" prefWidth="200.0" textFill="WHITE">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="labelAnchor" layoutX="619.0" layoutY="286.0">
+                     <children>
+                        <Label fx:id="sum" prefHeight="135.0" prefWidth="158.0" style="-fx-background-color: #ffffff;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Button fx:id="btValider" layoutX="336.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#CScore" prefHeight="39.0" prefWidth="129.0" text="CALCULER" textFill="#fffefe">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btConf" layoutX="619.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#updateScore" prefHeight="39.0" prefWidth="129.0" text="CONFIRMER" textFill="#fffefe">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <AnchorPane fx:id="insererAnchorBacTic" layoutY="80.0" prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #3f51b5;">
+                     <children>
+                        <VBox layoutX="299.0" layoutY="145.0" prefHeight="200.0" prefWidth="245.0" spacing="12.0">
+                           <children>
+                              <TextField fx:id="tfAngTic" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfFrTic" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMathTic" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfPhyTic" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfTecTic" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMoyTic" style="-fx-background-color: #5d9cec;" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="37.0" layoutY="145.0" prefHeight="200.0" prefWidth="245.0">
+                           <children>
+                              <Label text="Anglais" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Français" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Mathématiques" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Physique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Technique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Moyenne" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="insererAnchorBacSport" layoutY="80.0" prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #3f51b5;">
+                     <children>
+                        <VBox layoutX="37.0" layoutY="111.0" prefHeight="220.0" prefWidth="245.0" spacing="12.0">
+                           <children>
+                              <Label text="Anglais" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Français" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Eduaction Physique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="SVT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Sp. Pratique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Sp. Theorique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Physique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Philosophie" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Moyenne" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="299.0" layoutY="111.0" prefHeight="200.0" prefWidth="245.0" spacing="12.0">
+                           <children>
+                              <TextField fx:id="tfAngSport" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfFrSport" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfEduPhSport" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfSVTSport" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfSpPrSport" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfSpTheoSport" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfPhysiqueSport" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfPhiloSport" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMoySport" style="-fx-background-color: #5d9cec;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="inserAnchorBacSe" layoutY="80.0" prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #3f51b5;">
+                     <children>
+                        <VBox layoutX="37.0" layoutY="111.0" prefHeight="200.0" prefWidth="245.0" spacing="12.0">
+                           <children>
+                              <Label text="Anglais" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Français" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Mathématique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Physique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="SVT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Moyenne" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="299.0" layoutY="111.0" prefHeight="200.0" prefWidth="183.0" spacing="12.0">
+                           <children>
+                              <TextField fx:id="tfAngSe" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfFrSe" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMathSe" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfPhySe" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfSVTSe" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMoySe" style="-fx-background-color: #5d9cec;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="insererAnchorBacMath" layoutY="80.0" prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #3f51b5;">
+                     <children>
+                        <VBox layoutX="299.0" layoutY="111.0" prefHeight="245.0" prefWidth="183.0" spacing="12.0">
+                           <children>
+                              <TextField fx:id="tfAngMath" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfFrMath" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMathMath" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfPhyMath" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfSVTMath" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMoyMath" style="-fx-background-color: #5d9cec;" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="38.0" layoutY="103.0" prefHeight="245.0" prefWidth="242.0" spacing="12.0">
+                           <children>
+                              <Label text="Anglais" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Français" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Mathématique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Physique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="SVT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Moyenne" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="insererAnchorBacLet" layoutY="80.0" prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #3f51b5;">
+                     <children>
+                        <VBox layoutX="299.0" layoutY="111.0" prefHeight="245.0" prefWidth="183.0" spacing="12.0">
+                           <children>
+                              <TextField fx:id="tfArabLet" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfAnglaisLet" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfFrLet" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfHisGeoLet" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfPhyLet" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMoyLet" style="-fx-background-color: #5d9cec;" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="37.0" layoutY="111.0" prefHeight="245.0" prefWidth="242.0" spacing="12.0">
+                           <children>
+                              <Label text="Arab" textFill="#fffbfb">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Anglais" textFill="#fffbfb">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Français" textFill="#fffbfb">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Histoire/Géographie" textFill="#fffbfb">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Philosophie" textFill="#fffbfb">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Moyenne" textFill="#fffbfb">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="insererAnchorBacEco" layoutY="80.0" prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #3f51b5;">
+                     <children>
+                        <VBox layoutX="37.0" layoutY="111.0" prefHeight="245.0" prefWidth="242.0" spacing="12.0">
+                           <children>
+                              <Label text="Anglais" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Economie" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Français" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Gestion" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Histoire/Géographie" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Mathématique" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Moyenne" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="299.0" layoutY="111.0" prefHeight="245.0" prefWidth="183.0" spacing="12.0">
+                           <children>
+                              <TextField fx:id="tfAnglaisEco" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMathEco" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfHisGeoEco" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfEcoEco" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfFrEco" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMoyEco" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfGeoEco" style="-fx-background-color: #5d9cec;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="insererAnchorBacInfo" layoutY="80.0" prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #3f51b5;">
+                     <children>
+                        <VBox layoutX="37.0" layoutY="111.0" prefHeight="300.0" prefWidth="242.0" spacing="12.0">
+                           <children>
+                              <Label text="Algorithmes" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Anglais" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Base de données" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Français" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Mathématique" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Physique" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="TIC" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Moyenne" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="299.0" layoutY="111.0" prefHeight="245.0" prefWidth="183.0" spacing="12.0">
+                           <children>
+                              <TextField fx:id="tfAlgoInfo" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfAngInfo" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfDBInfo" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfFrInfo" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMathInfo" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfPhInfo" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfTicInfo" style="-fx-background-color: #5d9cec;" />
+                              <TextField fx:id="tfMoyInfo" style="-fx-background-color: #5d9cec;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="saisirAnchor" layoutY="80.0" prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #3f51b5;">
+                     <children>
+                        <Label layoutX="36.0" layoutY="186.0" prefHeight="17.0" prefWidth="172.0" text="SAISIR VOTRE" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="36.0" layoutY="224.0" prefHeight="17.0" prefWidth="172.0" text="SCORE:" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="50.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="TFSCORE" layoutX="303.0" layoutY="242.0" prefHeight="38.0" prefWidth="195.0" style="-fx-background-color: #5d9cec;" />
+                        <Button fx:id="btConfirScoreSaisie" layoutX="336.0" layoutY="465.0" mnemonicParsing="false" onAction="#SaisirScore" prefHeight="39.0" prefWidth="129.0" text="CONFIRMER" textFill="#fffefe">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="topbar" prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: #5d9cec;">
+                     <children>
+                        <ImageView fx:id="returns" fitHeight="25.0" fitWidth="34.0" layoutX="14.0" layoutY="15.0" onMousePressed="#handleImageViewAction" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@topbarImages/back-arrow.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="saisir" fitHeight="38.0" fitWidth="42.0" layoutX="105.0" layoutY="7.0" onMousePressed="#handleImageViewAction" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@topbarImages/edit.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="inserer" fitHeight="38.0" fitWidth="42.0" layoutX="385.0" layoutY="8.0" onMousePressed="#handleImageViewAction" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@topbarImages/add.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="consulter" fitHeight="38.0" fitWidth="42.0" layoutX="690.0" layoutY="8.0" onMousePressed="#handleImageViewAction" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@topbarImages/loupe.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="77.0" layoutY="49.0" prefHeight="17.0" prefWidth="97.0" text="Saisir votre score" textFill="WHITE">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="350.0" layoutY="49.0" prefHeight="17.0" prefWidth="108.0" text="Insérer votre score" textFill="WHITE">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="652.0" layoutY="49.0" prefHeight="17.0" prefWidth="122.0" text="Consulter Spécialités" textFill="WHITE">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="BacTypeAnchor" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3f51b5;">
+               <children>
+                  <Label layoutX="91.0" layoutY="239.0" prefHeight="38.0" prefWidth="122.0" text="CHOISIR VOTRE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="91.0" layoutY="272.0" prefHeight="38.0" prefWidth="122.0" text="BAC TYPE:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btsuivant" layoutX="346.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #5d9cec;" text="SUIVANT" textFill="#fffefe">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <SplitMenuButton fx:id="menuBac" layoutX="347.0" layoutY="262.0" mnemonicParsing="false" style="-fx-background-color: #5d9cec;" text="CHOISIR" textFill="#f26419">
+                     <items>
+                        <MenuItem fx:id="menuEco" mnemonicParsing="false" onAction="#bactypeEco" text="ECO" />
+                        <MenuItem fx:id="MenuInfo" mnemonicParsing="false" onAction="#bactypeInfo" text="INFO" />
+                        <MenuItem fx:id="MenuLet" mnemonicParsing="false" onAction="#bactypeLet" text="LET" />
+                        <MenuItem fx:id="MenuMath" mnemonicParsing="false" onAction="#bactypeMath" text="MATH" />
+                        <MenuItem fx:id="MenuSe" mnemonicParsing="false" onAction="#bactypeSe" text="Sc" />
+                        <MenuItem fx:id="MenuSport" mnemonicParsing="false" onAction="#bactypeSport" text="SPORT" />
+                        <MenuItem fx:id="MenuTech" mnemonicParsing="false" onAction="#bactypeTech" text="TECH" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </SplitMenuButton>
+                  <Label fx:id="lbbactype" layoutX="590.0" layoutY="96.0" prefHeight="46.0" prefWidth="122.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../Forum/theme/css/bootstrap2.css" />
+      <URL value="@../../Forum/theme/css/helpers2.css" />
+      <URL value="@../../Forum/theme/css/master2.css" />
+      <URL value="@../../Forum/theme/css/material-color2.css" />
+      <URL value="@../../Forum/theme/css/shape2.css" />
+      <URL value="@../../Forum/theme/css/skeleton2.css" />
+      <URL value="@../../Forum/theme/css/typographic2.css" />
+      <URL value="@../../Forum/theme/css/light.css" />
+   </stylesheets>
+</StackPane>

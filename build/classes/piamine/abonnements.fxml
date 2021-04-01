@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="piamine.AbonnementsController">
+   <children>
+      <TableView fx:id="main_table" layoutX="33.0" layoutY="46.0" onMouseClicked="#mouseClicked" prefHeight="302.0" prefWidth="493.0">
+         <columns>
+            <TableColumn fx:id="id" prefWidth="11.0" text="id" />
+            <TableColumn fx:id="club" prefWidth="200.0" text="Club" />
+            <TableColumn fx:id="Utilisateur" prefWidth="113.0" text="Utilisateur" />
+            <TableColumn fx:id="date" prefWidth="154.0" text="Date d'abonnement" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

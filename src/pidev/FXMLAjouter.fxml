@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLAjouterController">
+   <children>
+      <TabPane prefHeight="711.0" prefWidth="878.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Mes Cours">
+               <content>
+                  <AnchorPane id="AnchorPane" prefHeight="698.0" prefWidth="881.0">
+                     <children>
+                        <Button fx:id="btnajouter" layoutX="28.0" layoutY="548.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="136.0" text="Ajouter">
+                         
+                        </Button>
+                        <Label layoutX="24.0" layoutY="162.0" prefHeight="26.0" prefWidth="175.0" text="Nom du Cours" textFill="WHITE" />
+                        <TextField fx:id="tfNom" layoutX="180.0" layoutY="162.0" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: ffffff;" />
+                        <Label layoutX="25.0" layoutY="99.0" prefHeight="26.0" prefWidth="142.0" text="Nom Specialite" textFill="WHITE" />
+                        <Button fx:id="btnupload" layoutX="180.0" layoutY="443.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="186.0" text="Upload">
+                          
+                        </Button>
+                        <Text fx:id="tfupload" fill="WHITE" layoutX="46.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vide" wrappingWidth="85.98307228088379" />
+                        <Label layoutX="20.0" layoutY="221.0" prefHeight="18.0" prefWidth="136.0" text="Discription" textFill="WHITE" />
+                        <Button fx:id="Getcourse" layoutX="180.0" layoutY="494.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="186.0" text="Get Cours">
+                           
+                        </Button>
+                        <Button fx:id="btnupdate" layoutX="28.0" layoutY="606.0" mnemonicParsing="false" onAction="#HandleUpdate" prefHeight="43.0" prefWidth="136.0" text="Update">
+                           
+                        </Button>
+                        <TextArea fx:id="tfdiscription" layoutX="178.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" />
+                        <Button fx:id="btnsupprime" layoutX="183.0" layoutY="606.0" mnemonicParsing="false" onAction="#handleSupprime" prefHeight="43.0" prefWidth="136.0" text="Supprimer">
+                          
+                        </Button>
+                        <Label layoutX="25.0" layoutY="71.0" prefHeight="18.0" prefWidth="64.0" text="ID Cours :" textFill="WHITE" />
+                        <Label fx:id="tfid" layoutX="183.0" layoutY="71.0" prefHeight="18.0" prefWidth="150.0" />
+                        <AnchorPane layoutX="380.0" layoutY="-2.0" prefHeight="698.0" prefWidth="502.0">
+                           <children>
+                              <TableView fx:id="tabSpec" layoutX="4.0" layoutY="166.0" onMouseClicked="#handleMouseAction" prefHeight="350.0" prefWidth="493.0">
+                                 <columns>
+                                    <TableColumn fx:id="colid" prefWidth="63.20001220703125" text="ID Cours" />
+                                    <TableColumn fx:id="colnom" minWidth="2.4000244140625" prefWidth="147.20001220703125" text="Nom du Cours" />
+                                    <TableColumn fx:id="colDiscription" prefWidth="119.20001220703125" text="Discription" />
+                                    <TableColumn fx:id="ColSpec" prefWidth="165.5999755859375" text="Nom du Specialite" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="btnback" layoutX="389.0" layoutY="548.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="43.0" prefWidth="98.0" text="Retour" />
+                              <TextField fx:id="filter" layoutX="14.0" layoutY="108.0" prefHeight="26.0" prefWidth="326.0" />
+                           </children>
+                        </AnchorPane>
+                        <ComboBox fx:id="spec" layoutX="172.0" layoutY="104.0" prefHeight="28.0" prefWidth="159.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Tous Les Cours">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tvetab" layoutX="219.0" layoutY="108.0" onMouseClicked="#handleMouseAction1" prefHeight="402.0" prefWidth="646.0">
+                          <columns>
+                            <TableColumn fx:id="colid1" prefWidth="67.20002746582031" text="ID Cours" />
+                            <TableColumn fx:id="colcoursname" prefWidth="141.5999755859375" text="Nom du Cours" />
+                              <TableColumn fx:id="coldescription" prefWidth="147.20001220703125" text="Description" />
+                              <TableColumn fx:id="colspec" prefWidth="96.0" text="Specialité" />
+                              <TableColumn fx:id="coletab" prefWidth="133.60003662109375" text="Etablissement" />
+                              <TableColumn fx:id="colRate" prefWidth="57.60009765625" text="Rate" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="filterField" layoutX="219.0" layoutY="53.0" prefHeight="26.0" prefWidth="529.0" />
+                        <Button fx:id="Getcourses" layoutX="219.0" layoutY="526.0" mnemonicParsing="false" onAction="#Onclick" prefHeight="45.0" prefWidth="142.0" text="Get Cours">
+                           
+                        </Button>
+                        <Button fx:id="btnCancel" layoutX="706.0" layoutY="526.0" mnemonicParsing="false" onAction="#Onclick" prefWidth="142.0" text="Retour">
+                          
+                        </Button>
+                        <Label layoutX="14.0" layoutY="95.0" prefHeight="26.0" prefWidth="105.0" text="Nom du Cours:" />
+                        <Label layoutX="17.0" layoutY="148.0" prefHeight="18.0" prefWidth="94.0" text="Discription:" />
+                        <Label layoutX="17.0" layoutY="57.0" prefHeight="18.0" prefWidth="64.0" text="ID Cours :" />
+                        <Label fx:id="tfid1" layoutX="101.0" layoutY="57.0" prefHeight="18.0" prefWidth="81.0" />
+                        <Label fx:id="tfNom1" layoutX="120.0" layoutY="93.0" prefHeight="30.0" prefWidth="101.0" />
+                        <Label fx:id="tfdiscription1" layoutX="110.0" layoutY="157.0" prefHeight="141.0" prefWidth="102.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../Forum/theme/css/bootstrap2.css" />
+      <URL value="@../../Forum/theme/css/helpers2.css" />
+      <URL value="@../../Forum/theme/css/master2.css" />
+      <URL value="@../../Forum/theme/css/material-color2.css" />
+      <URL value="@../../Forum/theme/css/shape2.css" />
+      <URL value="@../../Forum/theme/css/skeleton2.css" />
+      <URL value="@../../Forum/theme/css/typographic2.css" />
+      <URL value="@../../Forum/theme/css/light.css" />
+   </stylesheets>
+</StackPane>

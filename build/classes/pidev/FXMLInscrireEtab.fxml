@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLLoginetab">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="691.0">
+         <children>
+            <AnchorPane prefHeight="646.0" prefWidth="394.0" style="-fx-background-color: #3F51B5;" />
+            <VBox layoutX="250.0" layoutY="53.0" prefHeight="506.0" prefWidth="288.0" spacing="30.0" style="-fx-background-color: ffffff;">
+               <children>
+                  <TextField fx:id="tfNom_etab" prefHeight="38.0" prefWidth="288.0" promptText="Nom" />
+                  <TextField fx:id="tfAddress" prefHeight="32.0" prefWidth="288.0" promptText="Address" />
+                  <TextArea fx:id="tfDiscription" prefHeight="134.0" prefWidth="288.0" promptText="Discription" />
+                  <TextField fx:id="tfNum" prefHeight="27.0" prefWidth="200.0" promptText="Numero telephonique" />
+                  <PasswordField fx:id="tfpass" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
+                  <Button fx:id="btninscrire2" mnemonicParsing="false" onAction="#Onclick" prefHeight="38.0" prefWidth="298.0" text="Inscrire" textFill="WHITE" />
+                  <Button fx:id="btncancel" mnemonicParsing="false" onAction="#Onclick" prefHeight="42.0" prefWidth="296.0" text="Cancel" textFill="WHITE" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../Forum/theme/css/bootstrap2.css" />
+      <URL value="@../../Forum/theme/css/helpers2.css" />
+      <URL value="@../../Forum/theme/css/master2.css" />
+      <URL value="@../../Forum/theme/css/material-color2.css" />
+      <URL value="@../../Forum/theme/css/shape2.css" />
+      <URL value="@../../Forum/theme/css/skeleton2.css" />
+      <URL value="@../../Forum/theme/css/typographic2.css" />
+      <URL value="@../../Forum/theme/css/light.css" />
+   </stylesheets>
+</StackPane>

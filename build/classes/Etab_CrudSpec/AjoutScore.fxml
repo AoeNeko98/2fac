@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Etab_CrudSpec.AjoutScoreController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+         <children>
+            <HBox prefHeight="22.0" prefWidth="544.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="80.0" text="Bac Eco" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="17.0" prefWidth="82.0" text="Bac Info" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="21.0" prefWidth="92.0" text="Bac Lettre" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="17.0" prefWidth="90.0" text="Bac Math" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="17.0" prefWidth="91.0" text="Bac Sc.Ex" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="17.0" prefWidth="79.0" text="Bac Sport" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="17.0" prefWidth="118.0" text="Bac Tech" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="200.0" top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="135.0" prefWidth="723.0" spacing="15.0">
+               <children>
+                  <VBox prefHeight="134.0" prefWidth="130.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="130.0" text="Score 2016" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="35.0" prefWidth="131.0" text="Score 2017" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="35.0" prefWidth="127.0" text="Score 2018" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="35.0" prefWidth="127.0" text="Score 2019" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="35.0" prefWidth="126.0" text="Score 2020" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="134.0" prefWidth="68.0">
+                     <children>
+                        <TextField fx:id="tfBacEco1" text="0" />
+                        <TextField fx:id="tfBacEco2" text="0" />
+                        <TextField fx:id="tfBacEco3" text="0" />
+                        <TextField fx:id="tfBacEco4" text="0" />
+                        <TextField fx:id="tfBacEco5" text="0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="126.0" prefWidth="68.0">
+                     <children>
+                        <TextField fx:id="tfBacInfo1" text="0" />
+                        <TextField fx:id="tfBacInfo2" text="0" />
+                        <TextField fx:id="tfBacInfo3" text="0" />
+                        <TextField fx:id="tfBacInfo4" text="0" />
+                        <TextField fx:id="tfBacInfo5" text="0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="126.0" prefWidth="68.0">
+                     <children>
+                        <TextField fx:id="tfBacLettre1" text="0" />
+                        <TextField fx:id="tfBacLettre2" text="0" />
+                        <TextField fx:id="tfBacLettre3" text="0" />
+                        <TextField fx:id="tfBacLettre4" text="0" />
+                        <TextField fx:id="tfBacLettre5" text="0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="126.0" prefWidth="68.0">
+                     <children>
+                        <TextField fx:id="tfBacMath1" text="0" />
+                        <TextField fx:id="tfBacMath2" text="0" />
+                        <TextField fx:id="tfBacMath3" text="0" />
+                        <TextField fx:id="tfBacMath4" text="0" />
+                        <TextField fx:id="tfBacMath5" text="0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="126.0" prefWidth="68.0">
+                     <children>
+                        <TextField fx:id="tfBacSc1" text="0" />
+                        <TextField fx:id="tfBacSc2" text="0" />
+                        <TextField fx:id="tfBacSc3" text="0" />
+                        <TextField fx:id="tfBacSc4" text="0" />
+                        <TextField fx:id="tfBacSc5" text="0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="115.0" prefWidth="68.0">
+                     <children>
+                        <TextField fx:id="tfBacSport1" text="0" />
+                        <TextField fx:id="tfBacSport2" text="0" />
+                        <TextField fx:id="tfBacSport3" text="0" />
+                        <TextField fx:id="tfBacSport4" text="0" />
+                        <TextField fx:id="tfBacSport5" text="0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="126.0" prefWidth="68.0">
+                     <children>
+                        <TextField fx:id="tfBacTech1" text="0" />
+                        <TextField fx:id="tfBacTech2" text="0" />
+                        <TextField fx:id="tfBacTech3" text="0" />
+                        <TextField fx:id="tfBacTech4" text="0" />
+                        <TextField fx:id="tfBacTech5" text="0" />
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="50.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <Button fx:id="btConf" mnemonicParsing="false" onAction="#handleButtonConfAjout" prefHeight="25.0" prefWidth="108.0" text="DONE" textFill="#fffefe">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="600.0" top="80.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <StackPane.margin>
+            <Insets top="150.0" />
+         </StackPane.margin>
+      </VBox>
+   </children>
+  <stylesheets>
+      <URL value="@../../Forum/theme/css/bootstrap2.css" />
+      <URL value="@../../Forum/theme/css/helpers2.css" />
+      <URL value="@../../Forum/theme/css/master2.css" />
+      <URL value="@../../Forum/theme/css/material-color2.css" />
+      <URL value="@../../Forum/theme/css/shape2.css" />
+      <URL value="@../../Forum/theme/css/skeleton2.css" />
+      <URL value="@../../Forum/theme/css/typographic2.css" />
+      <URL value="@../../Forum/theme/css/light.css" />
+   </stylesheets>
+</StackPane>

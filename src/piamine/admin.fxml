@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="piamine.AdminController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="779.0" style="-fx-background-color: #3F51B5;">
+         <children>
+            <TableView fx:id="tvuser" layoutX="36.0" layoutY="50.0" onDragDetected="#handleMouseAction" onMouseClicked="#handleMouseAction" prefHeight="334.0" prefWidth="660.0">
+               <columns>
+                  <TableColumn fx:id="colidu" prefWidth="47.0" text="ID_User" />
+                  <TableColumn fx:id="colNom" prefWidth="70.0" text="Nom" />
+                  <TableColumn fx:id="colPrenom" prefWidth="95.0" text="Prenom" />
+                  <TableColumn fx:id="colEmail" prefWidth="115.0" text="Email" />
+                  <TableColumn fx:id="colDate" prefWidth="118.0" text="Date de naissance" />
+                  <TableColumn fx:id="colPassword" prefWidth="90.0" text="Password" />
+                  <TableColumn fx:id="tcrole" prefWidth="124.0" text="Role" />
+               </columns>
+            </TableView>
+            <TextField fx:id="s" layoutX="90.0" layoutY="13.0" onKeyTyped="#search" />
+            <Label fx:id="colid1" layoutX="36.0" layoutY="15.0" text="Search" textFill="#e8c5c5">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

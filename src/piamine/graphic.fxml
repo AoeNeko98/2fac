@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="piamine.GraphicController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../IN/src/gestionclub/Style.css">
+         <children>
+            <Button fx:id="load" layoutX="498.0" layoutY="14.0" mnemonicParsing="false" onAction="#load" style="-fx-background-color: #4CAF50;;" stylesheets="@../../../../IN/src/gestionclub/Style.css" text="LOAD" />
+            <BarChart fx:id="BarChart" blendMode="MULTIPLY" cache="true" depthTest="DISABLE" layoutX="86.0" layoutY="48.0" legendSide="LEFT" stylesheets="@../../../../IN/src/gestionclub/Style.css" title="Clubs">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </BarChart>
+            <Label disable="true" layoutX="14.0" layoutY="84.0" text="NBRE CLUBS">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label disable="true" layoutX="563.0" layoutY="418.0" text="NOM CLUBS">
+               <font>
+                  <Font name="System Bold Italic" size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

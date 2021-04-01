@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.FXMLLoginetab">
+   <children>
+      <AnchorPane prefHeight="418.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="620.0" prefWidth="346.0" style="-fx-background-color: #3F51B5;" />
+            <VBox layoutX="178.0" layoutY="58.0" prefHeight="406.0" prefWidth="320.0" spacing="60.0" style="-fx-background-color: ffffff;">
+               <children>
+                  <TextField fx:id="tfNom" prefHeight="38.0" prefWidth="294.0" promptText="nom de l'etablissement">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="getpass" mnemonicParsing="false" onAction="#Onhold" prefHeight="38.0" prefWidth="324.0" text="Envoyer mot de passe" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btncancel" mnemonicParsing="false" onAction="#Onhold" prefWidth="358.0" text="Back" />
+               </children>
+               <padding>
+                  <Insets top="100.0" />
+               </padding>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../Forum/theme/css/bootstrap2.css" />
+      <URL value="@../../Forum/theme/css/helpers2.css" />
+      <URL value="@../../Forum/theme/css/master2.css" />
+      <URL value="@../../Forum/theme/css/material-color2.css" />
+      <URL value="@../../Forum/theme/css/shape2.css" />
+      <URL value="@../../Forum/theme/css/skeleton2.css" />
+      <URL value="@../../Forum/theme/css/typographic2.css" />
+      <URL value="@../../Forum/theme/css/light.css" />
+   </stylesheets>
+</StackPane>
